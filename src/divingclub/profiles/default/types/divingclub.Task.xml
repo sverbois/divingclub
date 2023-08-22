@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<object name="divingclub.Task" meta_type="Dexterity FTI" i18n:domain="divingclub"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+
+    <property name="title" i18n:translate="">Task</property>
+    <property name="icon_expr">string:list-check</property>
+
+    <property name="add_permission">divingclub.AddTask</property>
+    <property name="klass">divingclub.contents.Task</property>
+    <property name="schema">divingclub.contents.ITask</property>
+
+    <property name="global_allow">True</property>
+
+    <property name="behaviors">
+        <element value="plone.eventbasic" />
+        <element value="collective.contentsections.namefromuuid" />
+        <element value="plone.locking" />
+        <element value="plone.versioning" />
+    </property>
+
+</object>

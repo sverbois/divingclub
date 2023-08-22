@@ -1,0 +1,10 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <!-- Task vocabularies -->
+  <!--<utility
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      name="divingclub.TaskCategories"
+      component=".vocabularies.get_EXAMPLE_vocabulary"
+      />-->
+
+</configure>

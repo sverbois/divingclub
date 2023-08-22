@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules xmlns="http://namespaces.plone.org/diazo"
+  xmlns:css="http://namespaces.plone.org/diazo/css"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <xi:include href="++theme++barceloneta/rules.xml" />
+
+  <after css:theme-children="head">
+    <link rel="stylesheet" type="text/css" href="{$portal_url}/++theme++divingclub/css/styles.css" />
+  </after>
+
+  <rules css:if-content="#visual-portal-wrapper">
+    <drop css:content="#portal-searchbox .searchSection" />
+    <drop css:content="#portal-breadcrumbs .breadcrumb" />
+  </rules>
+
+</rules>

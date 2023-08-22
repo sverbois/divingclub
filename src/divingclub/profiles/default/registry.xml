@@ -1,0 +1,14 @@
+<registry>
+    <record name="plone.roles_allowed_to_add_keywords">
+        <value>
+            <element>Manager</element>
+            <element>Site Administrator</element>
+        </value>
+    </record>
+    <record name="plone.use_uuid_as_userid">
+        <value>True</value>
+    </record>
+    <record name="plone.use_email_as_login">
+        <value>True</value>
+    </record>
+</registry>

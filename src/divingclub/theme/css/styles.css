@@ -1,0 +1,46 @@
+body #section-byline {
+  display: none;
+}
+body #plone-contentmenu-actions,
+body #plone-contentmenu-workflow {
+  display: none;
+}
+body.userrole-manager #plone-contentmenu-actions,
+body.userrole-manager #plone-contentmenu-workflow {
+  display: block;
+}
+
+:root {
+  --fc-list-event-hover-bg-color: none;
+  --fc-page-bg-color: var(--bs-gray-300);
+  --fc-button-bg-color: var(--bs-gray-600);
+  --fc-button-border-color: var(--bs-gray-600);
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-bottom: 5px;
+}
+.fc .fc-toolbar.fc-header-toolbar div {
+  vertical-align: bottom;
+}
+.fc .fc-toolbar.fc-header-toolbar .fc-button {
+  padding: 3px;
+}
+.fc-toolbar-title {
+  display: inline-block;
+}
+.fc-event.task-pool {
+  background-color: #9ec5fe;
+}
+.fc-event.task-bar {
+  background-color: #ffe69c;
+}
+.fc-event.task-inflation {
+  background-color: #a3cfbb;
+}
+.fc-list-day-text,
+.fc-today-button,
+.fc-toolbar-title {
+  text-transform: capitalize !important;
+  text-decoration: none;
+}

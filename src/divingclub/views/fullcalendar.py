@@ -23,11 +23,6 @@ class FullCalendarEventsView(DefaultView):
             event_url = event.absolute_url()
             is_editor = api.user.has_permission("Modify portal content", obj=event)
             infos_html = f"""<strong>{event.category_title}</strong><br />{event.manager_fullname}"""
-            history_html = (
-                f"""<a href="{event_url}/@@historyview" class="float-end  ps-3"><img src="{portal_url}/++plone++bootstrap-icons/clock.svg" /></a>"""
-                if is_editor
-                else ""
-            )
             edit_html = (
                 f"""<a href="{event_url}/@@edit" class="float-end  ps-3"><img src="{portal_url}/++plone++bootstrap-icons/pencil.svg" /></a>"""
                 if is_editor
@@ -38,7 +33,7 @@ class FullCalendarEventsView(DefaultView):
                 if is_editor
                 else ""
             )
-            event_html = f"<div>{delete_html}{edit_html}{history_html}{infos_html}</div>"
+            event_html = f"<div>{delete_html}{edit_html}{infos_html}</div>"
             infos.append(
                 {
                     "title": event.category_title + " / " + event.manager_fullname,

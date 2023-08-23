@@ -15,33 +15,6 @@
   </metal:b>
 
   <metal:b fill-slot="content-core">
-    ICI
-    <div class="autotabs">
-      <nav
-        class="autotoc-nav mb-3"
-        tal:define="
-             view_actions view/prepareObjectTabs;
-           "
-      >
-        <ul class="nav nav-tabs">
-          <li class="nav-item" tal:repeat="action view_actions">
-            <a
-              id="contentview-${action/id}"
-              href="${action/url}"
-              tal:define="
-                 selected action/selected|nothing;
-               "
-              tal:attributes="
-                 class python:'autotoc-level-1' + (' nav-link active' if selected else ' nav-link');
-               "
-              i18n:translate=""
-              >${action/title}</a
-            >
-          </li>
-        </ul>
-      </nav>
-
-      <metal:b use-macro="context/@@ploneform-macros/titlelessform" />
-    </div>
+    <metal:b use-macro="context/@@ploneform-macros/titlelessform" />
   </metal:b>
 </html>

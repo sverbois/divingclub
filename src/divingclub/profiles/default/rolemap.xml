@@ -14,9 +14,9 @@
       <role name="Manager" />
     </permission>
 
-    <permission name="Set own properties" acquire="False">
+    <!--<permission name="Set own properties" acquire="False">
       <role name="Manager" />
-    </permission>
+    </permission>-->
 
     <permission name="divingclub: Add Task" acquire="False">
       <role name="Manager" />

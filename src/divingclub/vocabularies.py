@@ -7,7 +7,7 @@ from zope.schema.vocabulary import SimpleVocabulary
 
 
 def vocabulary_from_items(items, add_none_value=True):
-    terms = [SimpleTerm(value=key, token=str(key), title=value) for key, value in items.iteritems()]
+    terms = [SimpleTerm(value=key, token=str(key), title=value) for key, value in items.items()]
     if add_none_value:
         none_term = SimpleTerm(value=None, token=str(None), title="     ")
         terms.insert(0, none_term)
@@ -20,12 +20,20 @@ def get_title_from_taxonomy_value(taxonomy_name, taxonomie_value):
     return title
 
 
-EXAMPLE = {
-    "bar": "Bar",
-    "inflation": "Gonflage",
-    "pool": "Surveillance piscine",
+DIVER_CERTIFICATES = {
+    "swimmer": "Nageur",
+    "child": "Plongeur enfant",
+    "diver0": "Plongeur NH",
+    "diver1": "Plongeur 1*",
+    "diver2": "Plongeur 2*",
+    "diver3": "Plongeur 3*",
+    "diver3ppa": "Plongeur 3* PPA",
+    "diver4": "Plongeur 4*",
+    "instructor1": "Moniteur club",
+    "instructor2": "Moniteur fédéral",
+    "instructor3": "Moniteur national",
 }
 
 
-def get_EXAMPLE_vocabulary(context):
-    return vocabulary_from_items(EXAMPLE)
+def get_divercertificates_vocabulary(context):
+    return vocabulary_from_items(DIVER_CERTIFICATES)

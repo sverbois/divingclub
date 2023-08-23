@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object name="portal_actions" meta_type="Plone Actions Tool"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+    <object name="user" meta_type="CMF Action Category">
+        <object name="preferences" meta_type="CMF Action" i18n:domain="plone">
+            <property name="title" i18n:translate="">Preferences</property>
+            <property name="description" i18n:translate=""></property>
+            <property name="url_expr">python:f&quot;{plone_portal_state.navigation_root_url()}/@@personal-preferences&quot;</property>
+            <property name="link_target"></property>
+            <property name="icon_expr">string:plone-user</property>
+            <property name="available_expr">python:member is not None</property>
+            <property name="permissions">
+                <element value="View" />
+            </property>
+            <property name="visible">False</property>
+        </object>
+        <object name="preferences" meta_type="CMF Action" i18n:domain="plone">
+            <property name="visible">False</property>
+        </object>
+        <object name="informations" meta_type="CMF Action" i18n:domain="plone">
+            <property name="title" i18n:translate="">title_personal_information_form</property>
+            <property name="url_expr">python:f&quot;{plone_portal_state.navigation_root_url()}/@@personal-information&quot;</property>
+            <property name="icon_expr">string:plone-user</property>
+            <property name="available_expr">python:member is not None</property>
+            <property name="permissions">
+                <element value="Set own properties" />
+            </property>
+            <property name="visible">True</property>
+        </object>
+        <object name="password" meta_type="CMF Action" i18n:domain="plone">
+            <property name="title" i18n:translate="">label_password</property>
+            <property name="url_expr">python:f&quot;{plone_portal_state.navigation_root_url()}/@@change-password&quot;</property>
+            <property name="icon_expr">string:plone-user</property>
+            <property name="available_expr">python:member is not None</property>
+            <property name="permissions">
+                <element value="Set own password" />
+            </property>
+            <property name="visible">True</property>
+        </object>
+    </object>
+</object>

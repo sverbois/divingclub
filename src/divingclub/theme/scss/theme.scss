@@ -1,32 +1,29 @@
 // New colors
 
-$pink: #EE4793;
-$light-pink: #F3A4CB;
-$lighter-pink: #f7d4e5;
-$lightest-pink: #fff2f8;
-$medium-grey: #555;
-
+// $pink: #EE4793;
+// $light-pink: #F3A4CB;
+// $lighter-pink: #f7d4e5;
+// $lightest-pink: #fff2f8;
+// $medium-grey: #555;
 
 // Boostrap variable overrides
 
 $enable-rounded: false;
 
-$primary: $pink;
-$secondary: $light-pink;
-$body-bg: $lightest-pink;
-$breadcrumb-bg: $lighter-pink;
+// $primary: $pink;
+// $secondary: $light-pink;
+// $body-bg: $lightest-pink;
+// $breadcrumb-bg: $lighter-pink;
 
-$body-color: $medium-grey;
-$font-size-base: 1rem;
-$h1-font-size: $font-size-base * 3;
-$h2-font-size: $font-size-base * 2.5;
-
+// $body-color: $medium-grey;
+// $font-size-base: 1rem;
+// $h1-font-size: $font-size-base * 3;
+// $h2-font-size: $font-size-base * 2.5;
 
 @import "@plone/plonetheme-barceloneta-base/scss/barceloneta.scss";
 
+// More SCSS
 
-// More SCSS 
-
-#portal-header {
-    align-items: end;
-}
+// #portal-header {
+//     align-items: end;
+// }

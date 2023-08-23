@@ -12,3 +12,8 @@ An add-on for Diving Club website
 ## Start instance
 
     make start
+
+## Build theme
+
+    npm install
+    npm run build

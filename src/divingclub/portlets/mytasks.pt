@@ -1,0 +1,19 @@
+<div class="card portlet portletMyTasks">
+  <div class="card-header">Mes prochaines tâches</div>
+  <div class="card-body">
+    <ul>
+      <li class="portletItem" tal:repeat="item view/items">
+        Tâche <strong>${item/category_title}</strong> le
+        <time
+          datetime="${item/start}"
+          class="pat-display-time"
+          data-pat-display-time="output-format: dddd Do MMMM YYYY à HH:mm"
+          lang="fr"
+        />
+      </li>
+    </ul>
+  </div>
+  <div class="card-footer portletFooter">
+    <a href="taches">Toutes les tâches</a>
+  </div>
+</div>

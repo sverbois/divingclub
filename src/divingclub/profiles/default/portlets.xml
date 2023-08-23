@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<portlets>
+
+    <assignment category="group" manager="plone.dashboard1" key="AuthenticatedUsers" name="mytasks" type="portlets.Classic" visible="True">
+        <property name="template">portlet-mytasks-view</property>
+        <property name="macro"></property>
+    </assignment>
+
+</portlets>
+

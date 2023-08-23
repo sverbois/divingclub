@@ -36,5 +36,6 @@
   <include file="vocabularies.zcml" />
   <include package=".contents" />
   <include package=".views" />
+  <include package=".portlets" />
 
 </configure>

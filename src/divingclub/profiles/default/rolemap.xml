@@ -6,17 +6,9 @@
       <role name="Manager" />
     </permission>
 
-    <permission name="Portlets: Manage own portlets" acquire="False">
-      <role name="Manager" />
-    </permission>
-
     <permission name="Sharing page: Delegate roles" acquire="False">
       <role name="Manager" />
     </permission>
-
-    <!--<permission name="Set own properties" acquire="False">
-      <role name="Manager" />
-    </permission>-->
 
     <permission name="divingclub: Add Task" acquire="False">
       <role name="Manager" />

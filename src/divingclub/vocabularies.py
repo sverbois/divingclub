@@ -30,6 +30,7 @@ DIVER_CERTIFICATES = {
     "diver3": "Plongeur 3*",
     "diver3ppa": "Plongeur 3* PPA",
     "diver4": "Plongeur 4*",
+    "instructor0": "Aide moniteur",
     "instructor1": "Moniteur club",
     "instructor2": "Moniteur fédéral",
     "instructor3": "Moniteur national",

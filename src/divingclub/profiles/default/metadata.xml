@@ -2,5 +2,7 @@
 <metadata>
   <version>1</version>
   <dependencies>
+    <dependency>profile-collective.contentsections:default</dependency>
+    <dependency>profile-collective.easyform:default</dependency>
   </dependencies>
 </metadata>

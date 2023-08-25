@@ -12,6 +12,10 @@ body.userrole-manager #plone-contentmenu-workflow {
   display: block;
 }
 
+#content > header {
+  margin-bottom: 0px;
+}
+
 :root {
   --fc-list-event-hover-bg-color: none;
   --fc-page-bg-color: var(--bs-gray-300);

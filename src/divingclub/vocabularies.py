@@ -1,6 +1,7 @@
 from collective.taxonomy.interfaces import ITaxonomy
 from zope.component import getUtility
 from zope.component import queryUtility
+from zope.interface import provider
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
@@ -35,5 +36,6 @@ DIVER_CERTIFICATES = {
 }
 
 
+@provider(IVocabularyFactory)
 def get_divercertificates_vocabulary(context):
     return vocabulary_from_items(DIVER_CERTIFICATES)

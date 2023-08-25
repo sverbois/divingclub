@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <object name="Folder">
+    <property name="default_view">summary_view</property>
     <property name="view_methods" purge="false">
         <element value="fullcalendar" />
     </property>

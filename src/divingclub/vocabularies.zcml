@@ -2,7 +2,6 @@
 
   <!-- Diver certificates vocabulary -->
   <utility
-      provides="zope.schema.interfaces.IVocabularyFactory"
       name="divingclub.DiverCertificates"
       component=".vocabularies.get_divercertificates_vocabulary"
       />

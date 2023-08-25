@@ -1,0 +1,18 @@
+<div class="card portlet portletMyTasks">
+  <div class="card-header">Mes informations</div>
+  <div class="card-body">
+    <ul tal:define="infos view/informations">
+      <li class="portletItem">
+        <strong>Nom complet</strong> : ${infos/fullname}
+      </li>
+      <li class="portletItem"><strong>Courriel</strong> : ${infos/email}</li>
+      <li class="portletItem"><strong>Téléphone</strong> : ${infos/phone}</li>
+      <li class="portletItem">
+        <strong>Brevet</strong> : ${infos/certificate}
+      </li>
+    </ul>
+  </div>
+  <div class="card-footer portletFooter">
+    <a href="@@personal-information">Editer mes inforamtions</a>
+  </div>
+</div>

@@ -15,4 +15,14 @@
       layer="..interfaces.IBrowserLayer"
       />
 
+  <browser:page
+      name="portlet-myinformations-view"
+      for="*"
+      class=".myinformations.PortletView"
+      template="myinformations.pt"
+      permission="zope2.View"
+      layer="..interfaces.IBrowserLayer"
+      />
+
+
 </configure>

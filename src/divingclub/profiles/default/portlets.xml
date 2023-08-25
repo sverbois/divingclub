@@ -5,6 +5,10 @@
         <property name="template">portlet-mytasks-view</property>
         <property name="macro"></property>
     </assignment>
+    <assignment category="group" manager="plone.dashboard2" key="AuthenticatedUsers" name="myinformations" type="portlets.Classic" visible="True">
+        <property name="template">portlet-myinformations-view</property>
+        <property name="macro"></property>
+    </assignment>
 
 </portlets>
 

@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
-<object name="divingclub.Task" meta_type="Dexterity FTI" i18n:domain="divingclub"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
+<object name="divingclub.Task" meta_type="Dexterity FTI">
 
-    <property name="title" i18n:translate="">Task</property>
+    <property name="title">Tâche</property>
     <property name="icon_expr">string:list-check</property>
 
     <property name="add_permission">divingclub.AddTask</property>

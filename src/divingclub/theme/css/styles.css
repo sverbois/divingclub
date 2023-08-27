@@ -23,6 +23,10 @@ body.userrole-manager #plone-contentmenu-workflow {
   --fc-button-border-color: var(--bs-gray-600);
 }
 
+.fc .fc-scroller-liquid {
+  height: auto; /* display all list on smartphone */
+}
+
 .fc .fc-toolbar.fc-header-toolbar {
   margin-bottom: 5px;
 }

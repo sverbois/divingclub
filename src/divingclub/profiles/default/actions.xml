@@ -25,7 +25,7 @@
             <property name="permissions">
                 <element value="Set own properties" />
             </property>
-            <property name="visible">True</property>
+            <property name="visible">False</property>
         </object>
         <object name="password" meta_type="CMF Action" i18n:domain="plone">
             <property name="title" i18n:translate="">label_password</property>
@@ -35,7 +35,7 @@
             <property name="permissions">
                 <element value="Set own password" />
             </property>
-            <property name="visible">True</property>
+            <property name="visible">False</property>
         </object>
     </object>
 </object>

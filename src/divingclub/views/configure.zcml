@@ -20,5 +20,13 @@
       menu="plone_displayviews"
       title="Fullcalendar view"
       />
+  <browser:page
+      name="personal-information"
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
+      class=".personalinformation.OverridedUserDataPanel"
+      permission="cmf.SetOwnProperties"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+
 
 </configure>

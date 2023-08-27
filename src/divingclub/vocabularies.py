@@ -15,6 +15,16 @@ def vocabulary_from_items(items, add_none_value=True):
     return SimpleVocabulary(terms)
 
 
+def get_title_from_vocabulary_value(vocabulary_name, vocabulary_value):
+    factory = getUtility(IVocabularyFactory, vocabulary_name)
+    vocabulary = factory(None)
+    try:
+        term = vocabulary.getTerm(vocabulary_value)
+        return term.title
+    except:
+        return vocabulary_value
+
+
 def get_title_from_taxonomy_value(taxonomy_name, taxonomie_value):
     taxonomy = getUtility(ITaxonomy, name=taxonomy_name)
     title = taxonomy.translate(taxonomie_value, target_language="fr")

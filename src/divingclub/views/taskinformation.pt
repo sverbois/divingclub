@@ -1,0 +1,20 @@
+<html metal:use-macro="here/main_template/macros/master">
+  <metal:main fill-slot="content">
+    <h1>Information sur les tâches pour l'année ${view/year}</h1>
+    <table class="table">
+      <tr>
+        <th>Nom du membre</th>
+
+        <th tal:repeat="category_title view/categories/values">
+          ${category_title}
+        </th>
+      </tr>
+      <tr tal:repeat="item view/task_counts">
+        <td>${item/fullname}</td>
+        <td tal:repeat="category_value view/categories/keys">
+          ${python:item["counts"][category_value]}
+        </td>
+      </tr>
+    </table>
+  </metal:main>
+</html>

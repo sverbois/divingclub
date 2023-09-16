@@ -27,6 +27,14 @@
       permission="cmf.SetOwnProperties"
       layer="divingclub.interfaces.IBrowserLayer"
       />
+  <browser:page
+      name="task-information"
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
+      class=".taskinformation.TaskInformationView"
+      template="taskinformation.pt"
+      permission="cmf.SetOwnProperties"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
 
 
 </configure>

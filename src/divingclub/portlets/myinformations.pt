@@ -8,7 +8,7 @@
       <li class="portletItem"><strong>Courriel</strong> : ${infos/email}</li>
       <li class="portletItem"><strong>Téléphone</strong> : ${infos/phone}</li>
       <li class="portletItem">
-        <strong>Brevet</strong> : ${infos/certificate}
+        <strong>Plongeur</strong> : ${infos/diver_category}
       </li>
     </ul>
   </div>

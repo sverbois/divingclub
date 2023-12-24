@@ -2,8 +2,8 @@
 
   <!-- Diver certificates vocabulary -->
   <utility
-      name="divingclub.DiverCertificates"
-      component=".vocabularies.get_divercertificates_vocabulary"
+      name="divingclub.DiverCategories"
+      component=".vocabularies.get_diver_categories_vocabulary"
       />
 
 </configure>

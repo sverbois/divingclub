@@ -7,21 +7,71 @@
   xmlns:users="http://namespaces.plone.org/supermodel/users"
   xmlns="http://namespaces.plone.org/supermodel/schema" i18n:domain="plone">
   <schema name="member-fields">
+    <field name="lastname" type="zope.schema.TextLine">
+      <description />
+      <required>True</required>
+      <title>Nom de famille</title>
+    </field>
+    <field name="firstname" type="zope.schema.TextLine">
+      <description />
+      <required>True</required>
+      <title>Prénom</title>
+    </field>
     <field name="birthdate" type="zope.schema.Date">
       <description />
       <required>False</required>
       <title>Date de naissance</title>
     </field>
+    <field name="address_street" type="zope.schema.TextLine">
+      <description />
+      <required>False</required>
+      <title>Rue et numéro</title>
+    </field>
+    <field name="address_postalcode" type="zope.schema.TextLine">
+      <description />
+      <required>False</required>
+      <title>Code postal</title>
+    </field>
+    <field name="address_city" type="zope.schema.TextLine">
+      <description />
+      <required>False</required>
+      <title>Localité</title>
+    </field>
     <field name="phone" type="zope.schema.TextLine" users:forms="In User Profile">
-      <description>Utilisez la forme international. Exemple : +32486246123</description>
+      <description>Utilisez le format international. Exemple : +32486246123</description>
       <required>False</required>
       <title>Numéro de GSM</title>
     </field>
-    <field name="certificate" type="zope.schema.Choice" security:write-permission="cmf.ManagePortal">
+    <field name="lifras_id" type="zope.schema.TextLine" security:write-permission="cmf.ManagePortal">
       <description />
       <required>False</required>
-      <title>Brevet</title>
-      <vocabulary>divingclub.DiverCertificates</vocabulary>
+      <title>Identifiant LIFRAS</title>
+    </field>
+    <field name="febras_id" type="zope.schema.TextLine" security:write-permission="cmf.ManagePortal">
+      <description />
+      <required>False</required>
+      <title>Identifiant FEBRAS</title>
+    </field>
+    <field name="diver_category" type="zope.schema.Choice" security:write-permission="cmf.ManagePortal">
+      <description />
+      <required>False</required>
+      <title>Plongeur</title>
+      <vocabulary>divingclub.DiverCategories</vocabulary>
+    </field>
+    <field name="child_supervisor" type="zope.schema.Bool" security:write-permission="cmf.ManagePortal">
+      <description />
+      <required>False</required>
+      <title>Encadrant enfant</title>
+    </field>
+    <field name="nitrox_diver" type="zope.schema.Bool" security:write-permission="cmf.ManagePortal">
+      <description />
+      <required>False</required>
+      <title>Plongeur nitrox</title>
+    </field>
+    <field name="advanced_nitrox_diver" type="zope.schema.Bool" security:write-permission="cmf.ManagePortal">
+      <description />
+      <required>False</required>
+      <title>Plongeur nitrox confirmé</title>
     </field>
   </schema>
 </model>

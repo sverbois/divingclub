@@ -10,8 +10,8 @@ class PortletView(BrowserView):
     def informations(self):
         user = api.user.get_current()
         certificate = get_title_from_vocabulary_value(
-            "divingclub.DiverCertificates",
-            user.getProperty("certificate"),
+            "divingclub.DiverCategories",
+            user.getProperty("diver_category"),
         )
         infos = {
             "fullname": user.getProperty("fullname"),

@@ -28,6 +28,14 @@
       layer="divingclub.interfaces.IBrowserLayer"
       />
   <browser:page
+      name="member-information"
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
+      class=".memberinformation.MemberInformationView"
+      template="memberinformation.pt"
+      permission="cmf.SetOwnProperties"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+  <browser:page
       name="task-information"
       for="plone.app.layout.navigation.interfaces.INavigationRoot"
       class=".taskinformation.TaskInformationView"

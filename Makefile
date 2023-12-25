@@ -12,7 +12,7 @@ start: bin/instance
 
 .PHONY: clean  # Clean development environment
 clean:
-	rm -r .vscode bin develop-eggs include lib parts .installed.cfg pyvenv.cfg
+	rm -r bin develop-eggs eggs include lib parts .installed.cfg pyvenv.cfg
 
 bin/instance: bin/buildout
 
@@ -20,4 +20,4 @@ bin/buildout: bin/pip
 	bin/pip install -r https://dist.plone.org/release/6.0.8/requirements.txt
 
 bin/pip:
-	python3.9 -m venv .
+	python3.10 -m venv .

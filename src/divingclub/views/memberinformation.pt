@@ -9,6 +9,7 @@
           <th>Courriel</th>
           <th>Téléphone</th>
           <th>Plongeur</th>
+          <th>Adresse</th>
         </tr>
       </thead>
       <tbody>
@@ -18,6 +19,7 @@
           <td>${item/email}</td>
           <td>${item/phone}</td>
           <td>${item/diver_category}</td>
+          <td>${item/address}</td>
         </tr>
       </tbody>
     </table>

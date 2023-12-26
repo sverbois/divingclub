@@ -14,10 +14,12 @@ class PortletView(BrowserView):
             user.getProperty("diver_category"),
         )
         infos = {
-            "fullname": user.getProperty("fullname"),
+            "lastname": user.getProperty("lastname"),
+            "firstname": user.getProperty("firstname"),
             "email": user.getProperty("email"),
             "birthdate": user.getProperty("birthdate"),
             "phone": user.getProperty("phone"),
             "diver_category": diver_category,
+            "address": f'{user.getProperty("address_street")} - {user.getProperty("address_postalcode")} {user.getProperty("address_city")}',
         }
         return infos

@@ -17,22 +17,22 @@
       <required>True</required>
       <title>Prénom</title>
     </field>
-    <field name="birthdate" type="zope.schema.Date">
+    <field name="birthdate" type="zope.schema.Date" users:forms="In User Profile">
       <description />
       <required>False</required>
       <title>Date de naissance</title>
     </field>
-    <field name="address_street" type="zope.schema.TextLine">
-      <description />
+    <field name="address_street" type="zope.schema.TextLine" users:forms="In User Profile">
+      <description>Utilisez le format postal. Exemple : Rue du Baty-de-Crock 14 boîte 27</description>
       <required>False</required>
       <title>Rue et numéro</title>
     </field>
-    <field name="address_postalcode" type="zope.schema.TextLine">
+    <field name="address_postalcode" type="zope.schema.TextLine" users:forms="In User Profile">
       <description />
       <required>False</required>
       <title>Code postal</title>
     </field>
-    <field name="address_city" type="zope.schema.TextLine">
+    <field name="address_city" type="zope.schema.TextLine" users:forms="In User Profile">
       <description />
       <required>False</required>
       <title>Localité</title>

@@ -1,8 +1,11 @@
 <div class="card portlet portletMyTasks">
   <div class="card-header">Mes prochaines tâches</div>
-  <div class="card-body">
-    <ul>
-      <li class="portletItem" tal:repeat="item view/items">
+  <div class="card-body" tal:define="tasks view/items">
+    <p tal:condition="not:tasks">
+      Aucune tâche n'est actuellement planifiée pour vous.
+    </p>
+    <ul tal:condition="tasks">
+      <li class="portletItem" tal:repeat="item tasks">
         Tâche <strong>${item/category_title}</strong> le
         <time
           datetime="${item/start}"

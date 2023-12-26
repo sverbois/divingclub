@@ -2,14 +2,17 @@
   <div class="card-header">Mes informations</div>
   <div class="card-body">
     <ul tal:define="infos view/informations">
+      <li class="portletItem"><strong>Nom</strong> : ${infos/lastname}</li>
+      <li class="portletItem"><strong>Prénom</strong> : ${infos/firstname}</li>
       <li class="portletItem">
-        <strong>Nom complet</strong> : ${infos/fullname}
+        <strong>Date de naissance</strong> : ${infos/birthdate}
       </li>
       <li class="portletItem"><strong>Courriel</strong> : ${infos/email}</li>
       <li class="portletItem"><strong>Téléphone</strong> : ${infos/phone}</li>
       <li class="portletItem">
         <strong>Plongeur</strong> : ${infos/diver_category}
       </li>
+      <li class="portletItem"><strong>Addresse</strong> : ${infos/address}</li>
     </ul>
   </div>
   <div class="card-footer portletFooter">

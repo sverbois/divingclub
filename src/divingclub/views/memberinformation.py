@@ -28,6 +28,7 @@ class MemberInformationView(DefaultView):
                 "email": u.getProperty("email"),
                 "phone": u.getProperty("phone"),
                 "diver_category": categories.get(u.getProperty("diver_category"), None),
+                "address": f'{u.getProperty("address_street")} - {u.getProperty("address_postalcode")} {u.getProperty("address_city")}'
             }
             infos.append(user_infos)
 

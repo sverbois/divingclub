@@ -4,6 +4,8 @@
 
     <permission name="List folder contents" acquire="False">
       <role name="Manager" />
+      <role name="Owner" />
+      <role name="Editor" />
     </permission>
 
     <permission name="Sharing page: Delegate roles" acquire="False">

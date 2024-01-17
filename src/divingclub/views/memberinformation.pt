@@ -1,7 +1,7 @@
 <html metal:use-macro="here/main_template/macros/master">
   <metal:main fill-slot="content">
     <h1>Liste des membres</h1>
-    <table class="pat-datatables table" data-pat-datatables='{"pageLength":25}'>
+    <table class="pat-datatables table table-striped" data-pat-datatables='{"pageLength":25}'>
       <thead>
         <tr>
           <th>Nom</th>

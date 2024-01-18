@@ -1,0 +1,12 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    >
+
+  <subscriber
+      for="divingclub.contents.IRegistration
+           zope.lifecycleevent.IObjectAddedEvent"
+      handler=".subscribers.on_add_registration"
+      />
+
+</configure>

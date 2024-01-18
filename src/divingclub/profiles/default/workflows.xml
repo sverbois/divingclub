@@ -2,7 +2,8 @@
 <object name="portal_workflow" meta_type="Plone Workflow Tool">
   <object name="content_folder_workflow" meta_type="Workflow" />
   <object name="content_page_workflow" meta_type="Workflow" />
-  <object name="content_registration_workflow" meta_type="Workflow"/>
+  <object name="content_registration_workflow" meta_type="Workflow" />
+  <object name="content_trip_workflow" meta_type="Workflow" />
   <bindings>
     <type type_id="Folder">
       <bound-workflow workflow_id="content_folder_workflow" />
@@ -18,6 +19,9 @@
     </type>
     <type type_id="EasyForm">
       <bound-workflow workflow_id="content_page_workflow" />
+    </type>
+    <type type_id="divingclub.Trip">
+      <bound-workflow workflow_id="content_trip_workflow" />
     </type>
     <type type_id="divingclub.Registration">
       <bound-workflow workflow_id="content_registration_workflow" />

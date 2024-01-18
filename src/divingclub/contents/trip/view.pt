@@ -4,12 +4,12 @@
             <div class="card-body">
                 <div class="row row-cols-1 row-cols-md-3 h4 gy-3">
                     <div class="col">
-                        <tal:icon tal:replace="structure python:icons.tag('geo-alt')" />
-                        <span tal:replace="structure view/w/spot/render" />
-                    </div>
-                    <div class="col">
                         <tal:icon tal:replace="structure python:icons.tag('calendar')" />
                         <time class="pat-display-time" data-pat-display-time="output-format: dddd D MMMM YYYY à HH:mm" datetime="${context/start}">${context/start}</time>
+                    </div>
+                    <div class="col">
+                        <tal:icon tal:replace="structure python:icons.tag('geo-alt')" />
+                        <span tal:replace="structure view/w/spot/render" />
                     </div>
                     <div class="col">
                         <tal:icon tal:replace="structure python:icons.tag('person')" />
@@ -78,13 +78,12 @@
             <p tal:condition="not:registrations">
                 Pas encore d'inscriptions pour cette sortie.
             </p>
-        </section>
-        <div tal:condition="python:user.has_role(['Authenticated',], context)">
-            <a tal:attributes="href string:${context/absolute_url}/++add++divingclub.Registration" class="btn btn-primary">Ajouter une inscription</a>
-            <a tal:attributes="href string:${context/absolute_url}/@@sheet" class="btn btn-secondary">Feuille de palanquée</a>
-        </div>
-        <div tal:condition="python:not user.has_role(['Authenticated',], context)">
-            <a tal:attributes="href string:${context/absolute_url}/login" class="btn btn-primary">Connecter vous</a> pour vous inscrire.
-        </div>
-    </metal:content-core>
-</html>
+            <div tal:condition="python:user.has_role(['Authenticated',], context)">
+                <a tal:condition="python:checkPermission('divingclub: Add Registration', context)" tal:attributes="href string:${context/absolute_url}/++add++divingclub.Registration" class="btn btn-primary">Ajouter une inscription</a>
+                <a tal:attributes="href string:${context/absolute_url}/@@sheet" class="btn btn-primary m-1">Feuille de palanquée</a>
+            </div>
+            <div tal:condition="python:not user.has_role(['Authenticated',], context)">
+                <a tal:attributes="href string:${context/absolute_url}/login" class="btn btn-primary m-1">Connecter vous</a> pour vous inscrire.
+            </div>
+        </metal:content-core>
+    </html>

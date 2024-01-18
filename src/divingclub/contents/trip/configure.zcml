@@ -20,4 +20,14 @@
       layer="divingclub.interfaces.IBrowserLayer"
       />
 
+  <!-- Sheet HTML view -->
+  <browser:page
+      name="sheet"
+      for=".content.ITrip"
+      class=".views.TripSheetView"
+      template="sheet.pt"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+
 </configure>

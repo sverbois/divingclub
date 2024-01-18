@@ -48,6 +48,31 @@ DIVER_CATEGORIES = {
     "instructor3": "Moniteur National",
 }
 
+DIVER_CATEGORY_TO_GROUP = {
+    "child0": "child",
+    "child1": "child",
+    "child2": "child",
+    "child3": "child",
+    "diver0": "zero",
+    "diver1": "un",
+    "diver2": "deux",
+    "diver3": "trois",
+    "diver3ppa": "trois",
+    "diver4": "trois",
+    "instructor0": "moniteur",
+    "instructor1": "moniteur",
+    "instructor2": "moniteur",
+    "instructor3": "moniteur",
+}
+DIVER_CATEGORY_TO_ACRONYM = {
+    "diver3ppa": "PPA",
+    "diver4": "PPA",
+    "instructor0": "AM",
+    "instructor1": "MC",
+    "instructor2": "MF",
+    "instructor3": "MN",
+}
+
 
 @provider(IVocabularyFactory)
 def get_diver_categories_vocabulary(context):

@@ -50,8 +50,12 @@ class Registration(Item):
         pass
 
     @property
+    def user(self):
+        return api.user.get(userid=self.participant)
+
+    @property
     def participant_fullname(self):
-        user = api.user.get(userid=self.participant)
+        user = self.user
         user_fullname = user.getProperty("fullname") if user else self.participant
         return user_fullname
 

@@ -80,7 +80,7 @@
             </p>
             <div tal:condition="python:user.has_role(['Authenticated',], context)">
                 <a tal:condition="python:checkPermission('divingclub: Add Registration', context)" tal:attributes="href string:${context/absolute_url}/++add++divingclub.Registration" class="btn btn-primary">Ajouter une inscription</a>
-                <a tal:attributes="href string:${context/absolute_url}/@@sheet" class="btn btn-primary m-1">Feuille de palanquée</a>
+                <a tal:attributes="href string:${context/absolute_url}/@@sheet" class="btn btn-primary m-1" target="_blank">Feuille de palanquée</a>
             </div>
             <div tal:condition="python:not user.has_role(['Authenticated',], context)">
                 <a tal:attributes="href string:${context/absolute_url}/login" class="btn btn-primary m-1">Connecter vous</a> pour vous inscrire.

@@ -42,7 +42,7 @@ class Trip(Container):
 
     @property
     def title(self):
-        computed_title = f"{self.location} le {self.start.date()}"
+        computed_title = f"Sortie {self.location} le {self.start.date()}"
         return computed_title
 
     @title.setter

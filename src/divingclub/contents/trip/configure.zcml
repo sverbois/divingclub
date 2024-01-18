@@ -20,12 +20,22 @@
       layer="divingclub.interfaces.IBrowserLayer"
       />
 
-  <!-- Sheet HTML view -->
+  <!-- Registration sheet view -->
   <browser:page
-      name="sheet"
+      name="registration-sheet"
       for=".content.ITrip"
       class=".views.TripSheetView"
-      template="sheet.pt"
+      template="registration-sheet.pt"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+
+  <!-- Team sheet view -->
+  <browser:page
+      name="team-sheet"
+      for=".content.ITrip"
+      class=".views.TripSheetView"
+      template="team-sheet.pt"
       permission="zope2.View"
       layer="divingclub.interfaces.IBrowserLayer"
       />

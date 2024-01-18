@@ -27,6 +27,5 @@
       <bound-workflow workflow_id="content_registration_workflow" />
     </type>
     <type type_id="divingclub.Task" />
-    <type type_id="divingclub.Trip" />
   </bindings>
 </object>

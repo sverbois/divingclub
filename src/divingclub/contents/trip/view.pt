@@ -1,0 +1,89 @@
+<html metal:use-macro="here/main_template/macros/master">
+    <metal:content-core fill-slot="content-core" tal:define="registrations view/registrations">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row row-cols-1 row-cols-md-3 h4 gy-3">
+                    <div class="col">
+                        <tal:icon tal:replace="structure python:icons.tag('geo-alt')" />
+                        <span tal:replace="structure view/w/spot/render" />
+                    </div>
+                    <div class="col">
+                        <tal:icon tal:replace="structure python:icons.tag('calendar')" />
+                        <time class="pat-display-time" data-pat-display-time="output-format: dddd D MMMM YYYY à HH:mm" datetime="${context/start}">${context/start}</time>
+                    </div>
+                    <div class="col">
+                        <tal:icon tal:replace="structure python:icons.tag('person')" />
+                            ${context/manager_fullname}
+                    </div>
+                    <!-- <div class="col">
+                            <tal:icon tal:replace="structure python:icons.tag('calendar-plus')" />
+                            <a href="${context/absolute_url}/ics_view">iCal</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <section tal:condition="python:user.has_role(['Authenticated',], context)">
+            <h2>Inscriptions (${python:len(registrations)})</h2>
+            <table class="table table-striped" tal:condition="registrations">
+                <thead>
+                    <tr>
+                        <th class="col-1">Situation</th>
+                        <th class="col-3">Nom</th>
+                        <th class="col-2">Brevet</th>
+                        <th class="d-none d-md-table-cell">Desideratas</th>
+                        <th class="col-2" tal:condition="python:user.has_role(['Manager','Reviewer'], context)"></th>
+                        <th class="col-1"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tal:repeat="registration registrations">
+                        <td>
+                            <div class="badge text-bg-${registration/color} w-100">${registration/state}</div>
+                        </td>
+                        <td>${registration/fullname}</td>
+                        <td>${registration/category}</td>
+                        <td class="d-none d-md-table-cell">${registration/whish}</td>
+                        <td tal:condition="python:user.has_role(['Manager','Reviewer'], context)">
+                            <form action="${registration/url}/@@content_status_modify" class="d-inline-block">
+                                <input type="hidden" name="workflow_action" value="make_declined" />
+                                <span tal:replace="structure context/@@authenticator/authenticator" />
+                                <button type="submit" class="btn">
+                                    <tal:icon tal:replace="structure python:icons.tag('emoji-frown', tag_class='text-danger')" />
+                                </button>
+                            </form>
+                            <form action="${registration/url}/@@content_status_modify" class="d-inline-block">
+                                <input type="hidden" name="workflow_action" value="make_pending" />
+                                <span tal:replace="structure context/@@authenticator/authenticator" />
+                                <button type="submit" class="btn">
+                                    <tal:icon tal:replace="structure python:icons.tag('emoji-neutral', tag_class='text-warning')" />
+
+                                </button>
+                            </form>
+                            <form action="${registration/url}/@@content_status_modify" class="d-inline-block">
+                                <input type="hidden" name="workflow_action" value="make_accepted" />
+                                <span tal:replace="structure context/@@authenticator/authenticator" />
+                                <button type="submit" class="btn">
+                                    <tal:icon tal:replace="structure python:icons.tag('emoji-smile', tag_class='text-success')" />
+                                </button>
+                            </form>
+                        </td>
+                        <td>
+                            <a tal:condition="registration/editable" href="${registration/url}/@@delete_confirmation" class="d-inline-block p-2">
+                                <tal:icon tal:replace="structure python:icons.tag('trash')" />
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p tal:condition="not:registrations">
+                Pas encore d'inscriptions pour cette sortie.
+            </p>
+        </section>
+        <div tal:condition="python:user.has_role(['Authenticated',], context)">
+            <a tal:attributes="href string:${context/absolute_url}/++add++divingclub.Registration" class="btn btn-primary">Ajouter une inscription</a>
+        </div>
+        <div tal:condition="python:not user.has_role(['Authenticated',], context)">
+            <a tal:attributes="href string:${context/absolute_url}/++add++divingclub.Registration">Connecter vous pour vous inscrire</a>
+        </div>
+    </metal:content-core>
+</html>

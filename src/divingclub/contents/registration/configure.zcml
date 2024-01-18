@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:faceted="http://namespaces.zope.org/faceted"
+    >
+
+  <!-- Add permission -->
+  <permission
+      id="divingclub.AddRegistration"
+      title="divingclub: Add Registration"
+      />
+
+  <!-- View view -->
+  <browser:page
+      name="view"
+      for=".content.IRegistration"
+      class=".views.RegistrationView"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+
+</configure>

@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<vdex xmlns="http://www.imsglobal.org/xsd/imsvdex_v1p0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsvdex_v1p0 imsvdex_v1p0.xsd
+                      http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd" orderSignificant="false" profileType="hierarchicalTokenTerms" language="en-us">
+  <vocabName>
+    <langstring language="fr">Lieux de plongée</langstring>
+  </vocabName>
+  <vocabIdentifier>trip_spots</vocabIdentifier>
+  <term>
+    <termIdentifier>vodelee</termIdentifier>
+    <caption>
+      <langstring language="fr">Carrière de Vodelée</langstring>
+    </caption>
+  </term>
+  <term>
+    <termIdentifier>roche</termIdentifier>
+    <caption>
+      <langstring language="fr">Carrière de Rochefontaine</langstring>
+    </caption>
+  </term>
+  <term>
+    <termIdentifier>vodecee</termIdentifier>
+    <caption>
+      <langstring language="fr">Carrière de Vodecée</langstring>
+    </caption>
+  </term>
+  <term>
+    <termIdentifier>gombe</termIdentifier>
+    <caption>
+      <langstring language="fr">Carrière de la Gombe</langstring>
+    </caption>
+  </term>
+</vdex>

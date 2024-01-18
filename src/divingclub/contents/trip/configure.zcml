@@ -1,0 +1,23 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:faceted="http://namespaces.zope.org/faceted"
+    >
+
+  <!-- Add permission -->
+  <permission
+      id="divingclub.AddTrip"
+      title="divingclub: Add Trip"
+      />
+
+  <!-- View view -->
+  <browser:page
+      name="view"
+      for=".content.ITrip"
+      class=".views.TripView"
+      template="view.pt"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+
+</configure>

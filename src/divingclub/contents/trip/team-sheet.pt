@@ -15,7 +15,7 @@
             width: 100%;
             display: grid;
             grid-template-columns:repeat(3, 1fr);
-            gap: 5px;
+            gap: 3px;
             font-size:11px
         }
         #dive-team {
@@ -26,10 +26,13 @@
             padding: 2px;
             text-decoration: underline;
         }
-        
+        @media print {
+            background: 1 1 !important;
+        }
         </style>
-        <div id="dive-sheet" class="text-center mt-1">
-            <div tal:repeat="team python:range(15)" id="dive-team" style="display:grid;grid-template-columns:repeat(9, 1fr);grid-auto-rows:minmax(24px, 24px);">
+        <h4 class="text-center mt-2 mb-2">Ecole de plongée sous-marine de Ciney (EPSM Ciney)</h4>
+        <div id="dive-sheet" class="text-center">
+            <div tal:repeat="team python:range(15)" id="dive-team" style="display:grid;grid-template-columns:repeat(9, 1fr);grid-auto-rows:minmax(23px, 23px);">
                 <div style="grid-column:1/5;grid-row:1;text-decoration:none;background:#AAA">
                     <span class="h6">Palanquée ${repeat/team/number}</span>
                 </div>

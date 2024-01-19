@@ -13,12 +13,17 @@
         }
         </style>
         <div tal:define="registrations view/registrations">
-            <table class="table table-borderless mt-4 mb-4">
+            <table class="table table-borderless mt-3 mb-4">
                 <tbody>
                     <tr>
-                        <td class="col h3 align-bottom">
-                    EPSM Ciney
+                        <td rowspan="2">
+                            <img style="height:120px" src="${portal_url}/++theme++divingclub/images/logo.png" alt="EPSM" />
                         </td>
+                        <td colspan="3" class="h4">
+                            <div class="pt-2">Ecole de plongée sous-marine de Ciney (EPSM Ciney)</div>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="col h6">
                             <div>
                                 <strong>Lieu</strong> : ${context/location}

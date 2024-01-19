@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <section tal:condition="python:user.has_role(['Authenticated',], context)">
+        <tal:if condition="python:user.has_role(['Authenticated',], context)">
             <h2>Inscriptions (${python:len(registrations)})</h2>
             <table class="table table-striped" tal:condition="registrations">
                 <thead>
@@ -78,13 +78,14 @@
             <p tal:condition="not:registrations">
                 Pas encore d'inscriptions pour cette sortie.
             </p>
-            <div tal:condition="python:user.has_role(['Authenticated',], context)">
-                <a tal:condition="python:checkPermission('divingclub: Add Registration', context)" tal:attributes="href string:${context/absolute_url}/++add++divingclub.Registration" class="btn btn-primary">Ajouter une inscription</a>
-                <a tal:attributes="href string:${context/absolute_url}/@@registration-sheet" class="btn btn-primary m-1" target="_blank">Feuille d'inscriptions</a>
-                <a tal:attributes="href string:${context/absolute_url}/@@team-sheet" class="btn btn-primary m-1" target="_blank">Feuille de palanquée</a>
+            <div class="d-grid row-gap-2">
+                <a tal:condition="python:checkPermission('divingclub: Add Registration', context)" tal:attributes="href string:${context/absolute_url}/++add++divingclub.Registration" class="col-12 col-md-3 btn btn-primary">Ajouter une inscription</a>
+                <a tal:attributes="href string:${context/absolute_url}/@@registration-sheet" class="col-12 col-md-3 btn btn-primary" target="_blank">Feuille d'inscriptions</a>
+                <a tal:attributes="href string:${context/absolute_url}/@@team-sheet" class="col-12 col-md-3 btn btn-primary" target="_blank">Feuille de palanquée</a>
             </div>
-            <div tal:condition="python:not user.has_role(['Authenticated',], context)">
-                <a tal:attributes="href string:${context/absolute_url}/login" class="btn btn-primary m-1">Connecter vous</a> pour vous inscrire.
-            </div>
-        </metal:content-core>
-    </html>
+        </tal:if>
+        <div tal:condition="python:not user.has_role(['Authenticated',], context)">
+            <a tal:attributes="href string:${portal_url}/login" class="col-12 col-md-3 btn btn-primary">Se connecter pour s'inscrire</a>
+        </div>
+    </metal:content-core>
+</html>

@@ -12,7 +12,10 @@ from divingclub.vocabularies import get_title_from_taxonomy_value
 
 
 def get_default_manager():
-    return api.user.get_current().getId()
+    current_user_id = api.user.get_current().getId()
+    if current_user_id == "admin":
+        return None
+    return current_user_id
 
 
 class ITask(model.Schema):

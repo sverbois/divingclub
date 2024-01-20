@@ -17,4 +17,24 @@
         </field>
         <value key="resource">++plone++bootstrap-icons/list-check.svg</value>
     </record>
+
+    <record name="plone.icon.contenttype/divingclub-trip">
+        <field type="plone.registry.field.TextLine">
+            <title>Trip content type icon</title>
+        </field>
+        <value key="resource">++plone++bootstrap-icons/pin-map.svg</value>
+    </record>
+    <record name="plone.icon.contenttype/divingclub-registration">
+        <field type="plone.registry.field.TextLine">
+            <title>Registration content type icon</title>
+        </field>
+        <value key="resource">++plone++bootstrap-icons/person.svg</value>
+    </record>
+    <record name="plone.icon.contenttype/divingclub-task">
+        <field type="plone.registry.field.TextLine">
+            <title>Task content type icon</title>
+        </field>
+        <value key="resource">++plone++bootstrap-icons/list-check.svg</value>
+    </record>
+
 </registry>

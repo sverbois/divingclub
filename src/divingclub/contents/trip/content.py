@@ -36,6 +36,9 @@ class ITrip(model.Schema):
 class Trip(Container):
     """Trip content type"""
 
+    def canSetDefaultPage(self):
+        return False
+
     @property
     def location(self):
         return get_title_from_taxonomy_value("collective.taxonomy.trip_spots", self.spot)

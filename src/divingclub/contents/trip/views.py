@@ -44,7 +44,8 @@ class TripView(DefaultView):
                     "category": registration.participant_category,
                     "url": self.context.absolute_url() + "/" + registration.getId(),
                     "whish": registration.whish,
-                    "state": STATE_INFOS[review_state]["title"],
+                    "state": STATE_INFOS[review_state],
+                    "state_title": STATE_INFOS[review_state]["title"],
                     "color": STATE_INFOS[review_state]["color"],
                     "editable": api.user.has_permission("Modify portal content", obj=registration),
                 }
@@ -54,7 +55,7 @@ class TripView(DefaultView):
 
 class TripSheetView(BrowserView):
     @property
-    def registrations(self):
+    def registrations_by_group(self):
         items = get_registrations(self.context, only_accepted=True)
         infos = {
             "moniteur": [],
@@ -80,11 +81,16 @@ class TripSheetView(BrowserView):
                     {
                         "fullname": user.getProperty("lastname")[:11] + " " + user.getProperty("firstname")[:1] + ".",
                         "info": user_info,
+                        "whish": r.whish.strip() if r.whish else "",
                     }
                 )
         # ADD Empty users to fill the table
         for group in infos.values():
             empty_group_count = 12 - len(group)
             for num in range(empty_group_count):
-                group.append({"fullname": "", "info": ""})
+                group.append({"fullname": "", "info": "", "whish": ""})
         return infos
+
+    @property
+    def registrations_with_whish(self):
+        return [r for group in self.registrations_by_group.values() for r in group if r["whish"]]

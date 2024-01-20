@@ -30,23 +30,25 @@
             background: 1 1 !important;
         }
         </style>
-        <h4 class="text-center mt-2 mb-2">Ecole de plongée sous-marine de Ciney (EPSM Ciney)</h4>
-        <div id="dive-sheet" class="text-center">
-            <div tal:repeat="team python:range(15)" id="dive-team" style="display:grid;grid-template-columns:repeat(9, 1fr);grid-auto-rows:minmax(23px, 23px);">
-                <div style="grid-column:1/5;grid-row:1;text-decoration:none;background:#AAA">
-                    <span class="h6">Palanquée ${repeat/team/number}</span>
+        <div tal:repeat="sheet_number python:range(2)">
+            <h4 class="text-center mt-4 mb-4">Ecole de plongée sous-marine de Ciney (EPSM Ciney)</h4>
+            <div id="dive-sheet" class="text-center">
+                <div tal:repeat="team python:range(12)" id="dive-team" style="display:grid;grid-template-columns:repeat(9, 1fr);grid-auto-rows:minmax(27px, 27px);">
+                    <div style="grid-column:1/5;grid-row:1;text-decoration:none;background:#AAA">
+                        <span class="h6">Palanquée ${python:repeat["team"].number()+sheet_number*12}</span>
+                    </div>
+                    <div style="grid-column:1/5;grid-row:2;"></div>
+                    <div style="grid-column:1/5;grid-row:3;"></div>
+                    <div style="grid-column:1/5;grid-row:4;"></div>
+                    <div style="grid-column:1/5;grid-row:5;"></div>
+                    <div style="grid-column:1/5;grid-row:6;"></div>
+                    <div style="grid-column:5/6;grid-row:1/7;">Ex.</div>
+                    <div style="grid-column:6/8;grid-row:1/3;">H.E.</div>
+                    <div style="grid-column:8/10;grid-row:1/3;">H.S.</div>
+                    <div style="grid-column:6/8;grid-row:3/5;">Prof.</div>
+                    <div style="grid-column:8/10;grid-row:3/5;">Durée</div>
+                    <div style="grid-column:6/10;grid-row:5/7;">Paliers</div>
                 </div>
-                <div style="grid-column:1/5;grid-row:2;"></div>
-                <div style="grid-column:1/5;grid-row:3;"></div>
-                <div style="grid-column:1/5;grid-row:4;"></div>
-                <div style="grid-column:1/5;grid-row:5;"></div>
-                <div style="grid-column:1/5;grid-row:6;"></div>
-                <div style="grid-column:5/6;grid-row:1/7;">Ex.</div>
-                <div style="grid-column:6/8;grid-row:1/3;">H.E.</div>
-                <div style="grid-column:8/10;grid-row:1/3;">H.S.</div>
-                <div style="grid-column:6/8;grid-row:3/5;">Prof.</div>
-                <div style="grid-column:8/10;grid-row:3/5;">Durée</div>
-                <div style="grid-column:6/10;grid-row:5/7;">Paliers</div>
             </div>
         </div>
     </metal:main>

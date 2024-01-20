@@ -45,10 +45,12 @@ class ParticipantValidator(validator.SimpleFieldValidator):
     def validate(self, value):
         if IAddForm.providedBy(self.view):
             trip = self.context
+            if value in trip.participants:
+                raise Invalid("Ce membre est déjà inscrit à la sortie.")
         elif IEditForm.providedBy(self.view):
             trip = aq_parent(self.context)
-        if value in trip.participants:
-            raise Invalid("Ce membre est déjà inscrit à la sortie.")
+            if (value != self.context.participant) and (value in trip.participants):
+                raise Invalid("Ce membre est déjà inscrit à la sortie.")
 
 
 validator.WidgetValidatorDiscriminators(ParticipantValidator, field=IRegistration["participant"])

@@ -28,17 +28,17 @@
                 <thead>
                     <tr>
                         <th class="col-1">Situation</th>
-                        <th class="col-3">Nom</th>
+                        <th class="col-2">Nom</th>
                         <th class="col-2">Brevet</th>
                         <th class="d-none d-md-table-cell">Desideratas</th>
-                        <th class="col-2" tal:condition="python:user.has_role(['Manager','Reviewer'], context)"></th>
-                        <th class="col-1"></th>
+                        <th class="col-1" tal:condition="python:user.has_role(['Manager','Reviewer'], context)"></th>
+                        <th class=""></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr tal:repeat="registration registrations">
                         <td>
-                            <div class="badge text-bg-${registration/color} w-100">${registration/state}</div>
+                            <div class="badge text-bg-${registration/color} w-100">${registration/state_title}</div>
                         </td>
                         <td>${registration/fullname}</td>
                         <td>${registration/category}</td>
@@ -47,14 +47,14 @@
                             <form action="${registration/url}/@@content_status_modify" class="d-inline-block">
                                 <input type="hidden" name="workflow_action" value="make_declined" />
                                 <span tal:replace="structure context/@@authenticator/authenticator" />
-                                <button type="submit" class="btn">
+                                <button type="submit" class="btn p-1">
                                     <tal:icon tal:replace="structure python:icons.tag('emoji-frown', tag_class='text-danger')" />
                                 </button>
                             </form>
                             <form action="${registration/url}/@@content_status_modify" class="d-inline-block">
                                 <input type="hidden" name="workflow_action" value="make_pending" />
                                 <span tal:replace="structure context/@@authenticator/authenticator" />
-                                <button type="submit" class="btn">
+                                <button type="submit" class="btn p-1">
                                     <tal:icon tal:replace="structure python:icons.tag('emoji-neutral', tag_class='text-warning')" />
 
                                 </button>
@@ -62,7 +62,7 @@
                             <form action="${registration/url}/@@content_status_modify" class="d-inline-block">
                                 <input type="hidden" name="workflow_action" value="make_accepted" />
                                 <span tal:replace="structure context/@@authenticator/authenticator" />
-                                <button type="submit" class="btn">
+                                <button type="submit" class="btn p-1">
                                     <tal:icon tal:replace="structure python:icons.tag('emoji-smile', tag_class='text-success')" />
                                 </button>
                             </form>

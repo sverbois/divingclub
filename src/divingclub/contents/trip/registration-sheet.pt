@@ -12,7 +12,7 @@
             max-width: 100% !important;
         }
         </style>
-        <div tal:define="registrations view/registrations">
+        <div tal:define="registrations_by_group view/registrations_by_group">
             <table class="table table-borderless mt-3 mb-4">
                 <tbody>
                     <tr>
@@ -106,7 +106,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td style="padding:0px;font-size:12px" tal:repeat ="group python:registrations.values()">
+                        <td style="padding:0px;font-size:12px" tal:repeat ="group python:registrations_by_group.values()">
                             <table class="table table-borderless m-0">
                                 <tbody>
                                     <tr class="border-top" tal:repeat="item group">
@@ -120,6 +120,13 @@
                     </tr>
                 </tbody>
             </table>
+            <section class="mt-5 p-5">
+                <h2 class="border-bottom py-2">Désideratas</h2>
+                <div tal:repeat="r view/registrations_with_whish" class="border-bottom py-2">
+                    <tal:icon tal:replace="structure python:icons.tag('person', tag_class='h4')" />
+                    <span class="fw-semibold me-1">${r/fullname}</span> ${python:r['whish']}
+                </div>
+            </section>
         </div>
     </metal:main>
 </html>

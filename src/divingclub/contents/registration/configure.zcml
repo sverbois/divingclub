@@ -10,6 +10,9 @@
       title="divingclub: Add Registration"
       />
 
+  <!-- Validators -->
+  <adapter factory=".content.ParticipantValidator" />
+
   <!-- View view -->
   <browser:page
       name="view"

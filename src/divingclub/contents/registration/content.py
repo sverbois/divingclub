@@ -1,3 +1,4 @@
+from Acquisition import aq_parent
 from collective.taxonomy.interfaces import ITaxonomy
 from plone import api
 from plone import schema
@@ -5,13 +6,17 @@ from plone.app.z3cform.widget import AjaxSelectFieldWidget
 from plone.autoform import directives
 from plone.dexterity.content import Item
 from plone.supermodel import model
+from z3c.form import validator
 from z3c.form.browser.radio import RadioFieldWidget
+from z3c.form.interfaces import IAddForm
+from z3c.form.interfaces import IEditForm
+from zope.interface import Invalid
 from zope.interface import implementer
 
 from divingclub.vocabularies import get_title_from_vocabulary_value
 
 
-def get_default_participant():
+def default_participant():
     current_user_id = api.user.get_current().getId()
     if current_user_id == "admin":
         return None
@@ -24,7 +29,7 @@ class IRegistration(model.Schema):
     participant = schema.Choice(
         title="Participant",
         vocabulary="plone.app.vocabularies.Users",
-        defaultFactory=get_default_participant,
+        defaultFactory=default_participant,
     )
     whish = schema.Text(
         title="Desiterata",
@@ -34,6 +39,19 @@ class IRegistration(model.Schema):
 
     # Widgets
     directives.widget("participant", AjaxSelectFieldWidget)
+
+
+class ParticipantValidator(validator.SimpleFieldValidator):
+    def validate(self, value):
+        if IAddForm.providedBy(self.view):
+            trip = self.context
+        elif IEditForm.providedBy(self.view):
+            trip = aq_parent(self.context)
+        if value in trip.participants:
+            raise Invalid("Ce membre est déjà inscrit à la sortie.")
+
+
+validator.WidgetValidatorDiscriminators(ParticipantValidator, field=IRegistration["participant"])
 
 
 @implementer(IRegistration)

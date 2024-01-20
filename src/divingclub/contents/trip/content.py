@@ -54,3 +54,7 @@ class Trip(Container):
         user = api.user.get(userid=self.manager)
         user_fullname = user.getProperty("fullname") if user else self.manager
         return user_fullname
+
+    @property
+    def participants(self):
+        return [r.participant for r in self.values() if r.portal_type == "divingclub.Registration"]

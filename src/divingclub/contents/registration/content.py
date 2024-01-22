@@ -80,6 +80,12 @@ class Registration(Item):
         return user_fullname
 
     @property
+    def participant_email(self):
+        user = self.user
+        user_email = user.getProperty("email") if user else ""
+        return user_email
+
+    @property
     def participant_category(self):
         user = api.user.get(userid=self.participant)
         user_category = user.getProperty("diver_category") if user else ""

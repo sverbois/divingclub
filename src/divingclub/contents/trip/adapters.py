@@ -15,9 +15,10 @@ class LocalRoleAdapter(object):
         """Grant permission for principal"""
         roles = []
         if principal == self.context.manager:
+            roles.append("Owner")
             roles.append("Reviewer")
         return roles
 
     def getAllRoles(self):
         """Grant permissions"""
-        return [(self.context.manager, ("Reviewer",))]
+        return [(self.context.manager, ("Owner", "Reviewer"))]

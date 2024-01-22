@@ -91,7 +91,7 @@
                     mailto_accepted_subject = f"&subject=Votre inscription à la {context.title} est CONFIRMÉE"
                     mailto_accepted_body = f"&body=Bonjour,%0D%0A%0D%0AVotre inscription à la {context.title} est CONFIRMÉE.%0D%0A%0D%0AA bientôt%0D%0A%0D%0A{user.getProperty('firstname')}"
                     mailto_accepted = mailto_base + mailto_accepted_bcc + mailto_accepted_subject + mailto_accepted_body
-                    mailto_declined_bcc = "?bcc=" + ",".join([r["email"] for r in accepted_registrations])
+                    mailto_declined_bcc = "?bcc=" + ",".join([r["email"] for r in declined_registrations])
                     mailto_declined_subject = f"&subject=Votre inscription à la {context.title} est REFUSÉE"
                     mailto_declined_body = f"&body=Bonjour,%0D%0A%0D%0AVotre inscription à la {context.title} est REFUSÉE pour cause de manque d'encadrement.%0D%0A%0D%0ACe sera pour une prochaine fois.%0D%0A%0D%0A{user.getProperty('firstname')}"
                     mailto_declined = mailto_base + mailto_declined_bcc + mailto_declined_subject + mailto_declined_body

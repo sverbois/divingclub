@@ -10,6 +10,9 @@
       title="divingclub: Add Trip"
       />
 
+  <!-- Local Role Adapter -->
+  <adapter factory=".adapters.LocalRoleAdapter" />
+
   <!-- View view -->
   <browser:page
       name="view"

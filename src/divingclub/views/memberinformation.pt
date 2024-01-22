@@ -1,6 +1,6 @@
 <html metal:use-macro="here/main_template/macros/master">
   <metal:main fill-slot="content">
-    <h1>Liste des membres</h1>
+    <h1>Coordonnées des membres</h1>
     <table class="pat-datatables table table-striped" data-pat-datatables='{"pageLength":25}'>
       <thead>
         <tr>
@@ -8,8 +8,8 @@
           <th>Prénom</th>
           <th>Courriel</th>
           <th>Téléphone</th>
-          <th>Plongeur</th>
           <th>Adresse</th>
+          <th>Anniversaire</th>
         </tr>
       </thead>
       <tbody>
@@ -18,8 +18,12 @@
           <td>${item/firstname}</td>
           <td>${item/email}</td>
           <td>${item/phone}</td>
-          <td>${item/diver_category}</td>
           <td>${item/address}</td>
+          <td>
+            <time datetime="${item/birthday}" class="pat-display-time" data-pat-display-time="output-format: D MMMM" lang="fr">
+              ${item/birthday}
+            </time>
+          </td>
         </tr>
       </tbody>
     </table>

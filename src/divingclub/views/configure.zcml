@@ -36,6 +36,14 @@
       layer="divingclub.interfaces.IBrowserLayer"
       />
   <browser:page
+      name="diver-information"
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
+      class=".diverinformation.DiverInformationView"
+      template="diverinformation.pt"
+      permission="cmf.SetOwnProperties"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+  <browser:page
       name="task-information"
       for="plone.app.layout.navigation.interfaces.INavigationRoot"
       class=".taskinformation.TaskInformationView"

@@ -1,0 +1,35 @@
+<html metal:use-macro="here/main_template/macros/master">
+  <metal:main fill-slot="content">
+    <h1>Liste des plongeurs</h1>
+    <p class="lead">
+      Informations sur les plongeurs du club.
+      Contacter le secrtaire du club pour corriger ou mettre à jour les informations de cette page.
+    </p>
+    <table class="pat-datatables table table-striped" data-pat-datatables='{"pageLength":25}'>
+      <thead>
+        <tr>
+          <th class="col-2">Nom</th>
+          <th class="col-2">Prénom</th>
+          <th class="col-2">Brevet</th>
+          <th class="col-1">ID LIFRAS</th>
+          <th class="col-1">ID FEBRAS</th>
+          <th class="">Certifications</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr tal:repeat="item view/member_information">
+          <td>${item/lastname}</td>
+          <td>${item/firstname}</td>
+          <td>${item/category} </td>
+          <td>${item/lifras}</td>
+          <td>${item/febras}</td>
+          <td>
+            <span class="badge bg-success">${item/nitrox}</span>
+            <span class="badge bg-success">${item/advanced}</span>
+            <span class="badge bg-success">${item/child}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </metal:main>
+</html>

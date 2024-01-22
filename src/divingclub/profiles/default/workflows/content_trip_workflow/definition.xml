@@ -2,10 +2,17 @@
 <dc-workflow workflow_id="content_trip_workflow" title="Content Trip Workflow" description="" state_variable="review_state" initial_state="open" manager_bypass="False">
  <permission>Add portal content</permission>
  <permission>divingclub: Add Registration</permission>
+ <permission>Modify portal content</permission>
  <state state_id="closed" title="Fermé">
   <exit-transition transition_id="make_open"/>
   <permission-map name="Add portal content" acquired="False">
    <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
    <permission-role>Reviewer</permission-role>
   </permission-map>
   <permission-map name="divingclub: Add Registration" acquired="False">
@@ -18,6 +25,12 @@
   <permission-map name="Add portal content" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Member</permission-role>
+   <permission-role>Reviewer</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Editor</permission-role>
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
    <permission-role>Reviewer</permission-role>
   </permission-map>
   <permission-map name="divingclub: Add Registration" acquired="False">

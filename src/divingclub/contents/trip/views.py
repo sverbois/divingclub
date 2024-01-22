@@ -33,18 +33,18 @@ class TripView(DefaultView):
 
     @property
     def registrations(self):
-        wtool = api.portal.get_tool("portal_workflow")
         items = get_registrations(self.context)
         infos = []
         for registration in items:
-            review_state = wtool.getInfoFor(registration, "review_state", None)
+            review_state = api.content.get_state(registration)
             infos.append(
                 {
                     "fullname": registration.participant_fullname,
                     "category": registration.participant_category,
+                    "email": registration.participant_email,
                     "url": self.context.absolute_url() + "/" + registration.getId(),
                     "whish": registration.whish,
-                    "state": STATE_INFOS[review_state],
+                    "state": review_state,
                     "state_title": STATE_INFOS[review_state]["title"],
                     "color": STATE_INFOS[review_state]["color"],
                     "editable": api.user.has_permission("Modify portal content", obj=registration),

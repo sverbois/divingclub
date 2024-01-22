@@ -1,5 +1,6 @@
 <html metal:use-macro="here/main_template/macros/master">
     <metal:content-core fill-slot="content-core" tal:define="registrations view/registrations">
+
         <div class="card mb-4">
             <div class="card-body">
                 <div class="row row-cols-1 row-cols-md-3 h4 gy-3">
@@ -79,9 +80,32 @@
                 Pas encore d'inscriptions pour cette sortie.
             </p>
             <div class="d-grid row-gap-2">
-                <a tal:condition="python:checkPermission('divingclub: Add Registration', context)" tal:attributes="href string:${context/absolute_url}/++add++divingclub.Registration" class="col-12 col-md-3 btn btn-primary">Ajouter une inscription</a>
-                <a tal:attributes="href string:${context/absolute_url}/@@registration-sheet" class="col-12 col-md-3 btn btn-primary" target="_blank">Feuille d'inscriptions</a>
-                <a tal:attributes="href string:${context/absolute_url}/@@team-sheet" class="col-12 col-md-3 btn btn-primary" target="_blank">Feuille de palanquée</a>
+                <?python
+                    state =  context_state.workflow_state()
+                    button_inscription_class = "btn-primary" if state == "open" else "btn-danger"
+                    accepted_registrations = [r for r in registrations if r["state"] == "accepted"]
+                    declined_registrations = [r for r in registrations if r["state"] == "declined"]
+                    pending_registrations = [r for r in registrations if r["state"] == "pending"]
+                    mailto_base = f"mailto:{user.getProperty('email')}"
+                    mailto_accepted_bcc = "?bcc=" + ",".join([r["email"] for r in accepted_registrations])
+                    mailto_accepted_subject = f"&subject=Votre inscription à la {context.title} est CONFIRMÉE"
+                    mailto_accepted_body = f"&body=Bonjour,%0D%0A%0D%0AVotre inscription à la {context.title} est CONFIRMÉE.%0D%0A%0D%0AA bientôt%0D%0A%0D%0A{user.getProperty('firstname')}"
+                    mailto_accepted = mailto_base + mailto_accepted_bcc + mailto_accepted_subject + mailto_accepted_body
+                    mailto_declined_bcc = "?bcc=" + ",".join([r["email"] for r in accepted_registrations])
+                    mailto_declined_subject = f"&subject=Votre inscription à la {context.title} est REFUSÉE"
+                    mailto_declined_body = f"&body=Bonjour,%0D%0A%0D%0AVotre inscription à la {context.title} est REFUSÉE pour cause de manque d'encadrement.%0D%0A%0D%0ACe sera pour une prochaine fois.%0D%0A%0D%0A{user.getProperty('firstname')}"
+                    mailto_declined = mailto_base + mailto_declined_bcc + mailto_declined_subject + mailto_declined_body
+                ?>
+                <a tal:condition="python:checkPermission('divingclub: Add Registration', context)" tal:attributes="href string:${context/absolute_url}/++add++divingclub.Registration" class="col-12 col-md-3 btn ${button_inscription_class}">Ajouter une inscription</a>
+                <tal:ready tal:condition="python:not pending_registrations">
+                    <a tal:attributes="href string:${context/absolute_url}/@@registration-sheet" class="col-12 col-md-3 btn btn-info" target="_blank">Feuille d'inscriptions</a>
+                    <a tal:attributes="href string:${context/absolute_url}/@@team-sheet" class="col-12 col-md-3 btn btn-info" target="_blank">Feuille de palanquée</a>
+                    <tal:if tal:condition="python:user.has_role(['Reviewer',], context)">
+                        <a href="${mailto_accepted}" class="col-12 col-md-3 btn btn-warning">Créer un courriel de confirmation pour les plongeurs acceptés</a>
+                        <a href="${mailto_declined}" class="col-12 col-md-3 btn btn-warning">Créer un courriel pour les plongeurs refusés</a>
+                    </tal:if>
+                </tal:ready>
+
             </div>
         </tal:if>
         <div tal:condition="python:not user.has_role(['Authenticated',], context)">

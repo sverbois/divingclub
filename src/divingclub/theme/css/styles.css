@@ -9,6 +9,9 @@ body.userrole-manager #plone-contentmenu-actions,
 body.userrole-manager #plone-contentmenu-workflow {
   display: block;
 }
+body.userrole-reviewer #plone-contentmenu-workflow {
+  display: block;
+}
 
 #content > header {
   margin-bottom: 0px;

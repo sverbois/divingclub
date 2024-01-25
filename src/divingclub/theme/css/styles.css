@@ -56,14 +56,24 @@ body.userrole-reviewer #plone-contentmenu-workflow {
   text-decoration: none;
 }
 
+/* Edit toolbar */
+
+#edit-zone .label-state-open {
+  color: var(--bs-success);
+}
+#edit-zone .label-state-closed {
+  color: var(--bs-danger);
+}
+
 /* Cacher le titre "Ajouter d'un élément" au dessus des items à ajouter*/
 #plone-contentmenu-factories h6.dropdown-header {
-  display:none; !important
+  display: none;
 }
 /* Personnalisation de la summary_view*/
 body.template-full_view #content-core img,
-body.template-summary_view #content-core  img {
+body.template-summary_view #content-core img {
   max-height: 125px;
+  -o-object-fit: cover;
   object-fit: cover;
 }
 #content-core h1 a,
@@ -73,3 +83,5 @@ body.template-summary_view #content-core  img {
 #content-core h1 {
   border-bottom: 1px solid var(--bs-secondary);
 }
+
+/*# sourceMappingURL=styles.css.map */

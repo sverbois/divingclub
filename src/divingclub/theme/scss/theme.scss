@@ -1,29 +1,37 @@
-// New colors
-
+// +++ NEW COLORS +++
 // $pink: #EE4793;
 // $light-pink: #F3A4CB;
 // $lighter-pink: #f7d4e5;
 // $lightest-pink: #fff2f8;
 // $medium-grey: #555;
 
-// Boostrap variable overrides
-
+// +++ VARIABLES OVERRIDES +++
 $enable-rounded: false;
-
 // $primary: $pink;
 // $secondary: $light-pink;
-// $body-bg: $lightest-pink;
+$body-bg: #efefef;
 // $breadcrumb-bg: $lighter-pink;
-
 // $body-color: $medium-grey;
 // $font-size-base: 1rem;
 // $h1-font-size: $font-size-base * 3;
 // $h2-font-size: $font-size-base * 2.5;
 
+@import "@plone/plonetheme-barceloneta-base/scss/variables.colors.plone";
+@import "@plone/plonetheme-barceloneta-base/scss/variables.properties";
+@import "@plone/plonetheme-barceloneta-base/scss/variables.barceloneta";
+@import "@plone/plonetheme-barceloneta-base/scss/base";
+
+// +++ MAPS OVERRIDES +++
+$custom-state-colors: (
+  "open": $success,
+  "closed": $warning,
+  "accepted": $success,
+  "pending": $warning,
+  "declined": $danger,
+);
+$state-colors: map-merge($state-colors, $custom-state-colors);
+
+// +++ IMPORT BARCELONETA SCSS +++
 @import "@plone/plonetheme-barceloneta-base/scss/barceloneta.scss";
 
-// More SCSS
-
-// #portal-header {
-//     align-items: end;
-// }
+// +++ MORE SCSS +++

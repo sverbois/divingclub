@@ -1,6 +1,7 @@
 <html metal:use-macro="here/main_template/macros/master">
   <metal:main fill-slot="content">
-    <h1>Informations sur les tâches pour l'année ${view/year}</h1>
+    <h1>Informations sur les tâches effectuées en ${view/year}</h1>
+    <p class="lead">Les tâches prisent en comptes pour ce tableau sont les tâches effectuées entre le 1 décembre ${python:view.year-1} et le 30 novembre  ${view/year}.</p>
     <table class="pat-datatables table" data-pat-datatables='{"pageLength":25}'>
       <thead>
         <tr>

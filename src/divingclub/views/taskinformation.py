@@ -1,6 +1,7 @@
 import datetime
 import json
 
+import DateTime
 from plone import api
 from plone.dexterity.browser.view import DefaultView
 from plone.memoize.view import memoize
@@ -33,14 +34,18 @@ class TaskInformationView(DefaultView):
                 "counts": {c: 0 for c in category_values},
             }
             infos[u.getId()] = user_infos
+        start = DateTime.DateTime(self.year - 1, 12, 1)  # 1st December of previous year
+        end = DateTime.DateTime(self.year, 12, 1)  # 1st December of current year
+        start_query = {"query": (start, end), "range": "min:max"}
         brains = api.content.find(
             context=self.context,
             portal_type="divingclub.Task",
             sort_on="start",
+            start=start_query,
         )
         for b in brains:
             task = b.getObject()
-            if task.start.year == self.year and task.manager in infos and task.category in category_values:
+            if task.manager in infos and task.category in category_values:
                 infos[task.manager]["counts"][task.category] += 1
         # Remove members with 0 tasks
         uids = [uid for uid in infos.keys()]

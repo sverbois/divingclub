@@ -39,7 +39,7 @@
                 <tbody>
                     <tr tal:repeat="registration registrations">
                         <td>
-                            <div class="badge text-bg-${registration/color} w-100">${registration/state_title}</div>
+                            <div class="badge text-white text-bg-${registration/color} w-100">${registration/state_title}</div>
                         </td>
                         <td>${registration/fullname}</td>
                         <td>${registration/category}</td>
@@ -96,7 +96,7 @@
                     mailto_declined_body = f"&body=Bonjour,%0D%0A%0D%0AVotre inscription à la {context.title} est REFUSÉE pour cause de manque d'encadrement.%0D%0A%0D%0ACe sera pour une prochaine fois.%0D%0A%0D%0A{user.getProperty('firstname')}"
                     mailto_declined = mailto_base + mailto_declined_bcc + mailto_declined_subject + mailto_declined_body
                 ?>
-                <a tal:condition="python:checkPermission('divingclub: Add Registration', context)" tal:attributes="href string:${context/absolute_url}/++add++divingclub.Registration" class="col-12 col-md-3 btn ${button_inscription_class}">Ajouter une inscription</a>
+                <a tal:condition="python:checkPermission('divingclub: Add Registration', context)" tal:attributes="href string:${context/absolute_url}/++add++divingclub.Registration" class="col-12 col-md-3 text-white btn ${button_inscription_class}">Ajouter une inscription</a>
                 <tal:ready tal:condition="python:not pending_registrations">
                     <a tal:attributes="href string:${context/absolute_url}/@@registration-sheet" class="col-12 col-md-3 btn btn-info" target="_blank">Feuille d'inscriptions</a>
                     <a tal:attributes="href string:${context/absolute_url}/@@team-sheet" class="col-12 col-md-3 btn btn-info" target="_blank">Feuille de palanquée</a>

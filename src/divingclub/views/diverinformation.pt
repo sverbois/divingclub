@@ -3,7 +3,7 @@
     <h1>Liste des plongeurs</h1>
     <p class="lead">
       Informations sur les plongeurs du club.
-      Contacter le secrtaire du club pour corriger ou mettre à jour les informations de cette page.
+      Contacter le secrétaire du club pour corriger ou mettre à jour les informations de cette page.
     </p>
     <table class="pat-datatables table table-striped" data-pat-datatables='{"pageLength":25}'>
       <thead>

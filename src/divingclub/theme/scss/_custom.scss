@@ -1,0 +1,40 @@
+.primary-section {
+  background-color: $primary;
+  .row {
+    color: $white;
+    a {
+      color: $white;
+      &:hover {
+        color: $primary;
+        background-color: $white;
+      }
+    }
+  }
+}
+.secondary-section {
+  background-color: $secondary;
+  .row {
+    color: $white;
+    a {
+      color: $white;
+      &:hover {
+        color: $secondary;
+        background-color: $white;
+      }
+    }
+  }
+}
+.black-section {
+  background-color: $black;
+  opacity: 0.5;
+  .row {
+    color: $white;
+    a {
+      color: $white;
+      &:hover {
+        color: $black;
+        background-color: $white;
+      }
+    }
+  }
+}

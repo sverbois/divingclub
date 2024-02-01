@@ -1,23 +1,26 @@
 <html metal:use-macro="here/main_template/macros/master">
-  <metal:main fill-slot="content">
+  <metal:main fill-slot="content" tal:define="counts view/task_counts">
     <h1>Informations sur les tâches effectuées en ${view/year}</h1>
-    <p class="lead">Les tâches prisent en comptes pour ce tableau sont les tâches effectuées entre le 1 décembre ${python:view.year-1} et le 30 novembre  ${view/year}.</p>
+    <p class="lead">Les tâches prisent en comptes pour le tableau ci-dessous sont les tâches effectuées entre le 1 décembre ${python:view.year-1} et le 30 novembre  ${view/year}.
+    La réduction totale octroyée aux membres pour leurs participations aux  tâches en ${view/year} est actuellement de <strong tal:content="python:str(sum([c['discount'] for c in counts])) + ' €'" />
+    </p>
     <table class="pat-datatables table" data-pat-datatables='{"pageLength":25}'>
       <thead>
         <tr>
           <th>Nom du membre</th>
-
           <th tal:repeat="category_title view/categories/values">
             ${category_title}
           </th>
+          <th>Réduction</th>
         </tr>
       </thead>
       <tbody>
-        <tr tal:repeat="item view/task_counts">
+        <tr tal:repeat="item counts">
           <td>${item/fullname}</td>
           <td tal:repeat="category_value view/categories/keys">
             ${python:item["counts"][category_value]}
           </td>
+          <td>${item/discount} €</td>
         </tr>
       </tbody>
     </table>

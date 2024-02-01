@@ -19,19 +19,21 @@ class TaskInformationView(DefaultView):
     @property
     @memoize
     def categories(self):
-        factory = getUtility(IVocabularyFactory, "collective.taxonomy.task_categories")
-        categories = {term.value: term.title for term in factory(None)}
-        return categories
+        return {
+            "bar_tuesday": "Bar (mardi)",
+            "bar_friday": "Bar (vendredi)",
+            "inflation": "Gonflage",
+            "pool": "Surveillance piscine",
+        }
 
     @property
     def task_counts(self):
-        category_values = self.categories.keys()
         users = api.user.get_users()
         infos = {}
         for u in users:
             user_infos = {
                 "fullname": u.getProperty("fullname"),
-                "counts": {c: 0 for c in category_values},
+                "counts": dict.fromkeys(self.categories.keys(), 0),
             }
             infos[u.getId()] = user_infos
         start = DateTime.DateTime(self.year - 1, 12, 1)  # 1st December of previous year
@@ -45,8 +47,15 @@ class TaskInformationView(DefaultView):
         )
         for b in brains:
             task = b.getObject()
-            if task.manager in infos and task.category in category_values:
-                infos[task.manager]["counts"][task.category] += 1
+            if task.manager in infos and task.category in ["bar", "inflation", "pool"]:
+                if task.category == "bar":
+                    if task.start.weekday() == 4:
+                        infos[task.manager]["counts"]["bar_friday"] += 1
+                    else:
+                        infos[task.manager]["counts"]["bar_tuesday"] += 1
+                else:
+                    infos[task.manager]["counts"][task.category] += 1
+
         # Remove members with 0 tasks
         uids = [uid for uid in infos.keys()]
         for uid in uids:
@@ -54,4 +63,11 @@ class TaskInformationView(DefaultView):
             if total == 0:
                 del infos[uid]
 
+        # Compute discount
+        POINT_VALUE = 1.5
+        for uid in infos:
+            infos[uid]["discount"] = 0.0
+            for category in self.categories:
+                points = 3 if category == "bar_friday" else 2
+                infos[uid]["discount"] += infos[uid]["counts"][category] * points * POINT_VALUE
         return infos.values()

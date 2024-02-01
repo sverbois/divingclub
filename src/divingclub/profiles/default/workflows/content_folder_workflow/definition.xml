@@ -2,8 +2,8 @@
 <dc-workflow workflow_id="content_folder_workflow" title="Content Folder Workflow" description="" state_variable="review_state" initial_state="internal" manager_bypass="False">
  <permission>Access contents information</permission>
  <permission>Modify portal content</permission>
- <permission>View</permission>
  <permission>Modify view template</permission>
+ <permission>View</permission>
  <state state_id="external" title="Public">
   <exit-transition transition_id="publish_internally"/>
   <permission-map name="Access contents information" acquired="False">
@@ -43,11 +43,13 @@
    <permission-role>Manager</permission-role>
    <permission-role>Member</permission-role>
    <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="Modify portal content" acquired="False">
    <permission-role>Manager</permission-role>
    <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="Modify view template" acquired="False">
@@ -61,6 +63,7 @@
    <permission-role>Manager</permission-role>
    <permission-role>Member</permission-role>
    <permission-role>Owner</permission-role>
+   <permission-role>Reviewer</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>

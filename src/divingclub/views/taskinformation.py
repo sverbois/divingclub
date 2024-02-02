@@ -43,6 +43,7 @@ class TaskInformationView(DefaultView):
             context=self.context,
             portal_type="divingclub.Task",
             sort_on="start",
+            review_state="performed",
             start=start_query,
         )
         for b in brains:

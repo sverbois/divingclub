@@ -1,6 +1,5 @@
 <div tal:define="task_url context/absolute_url;state view/state;icons python:context.restrictedTraverse('@@iconresolver');">
     <div class="float-end">
-        <div class="badge text-white text-bg-${state/color}" style="width:7rem;">${state/title}</div>
         <div tal:condition="view/is_reviewer" class="d-inline-block">
             <form action="${task_url}/@@content_status_modify" class="d-inline-block p-1">
                 <input type="hidden" name="workflow_action" value="make_notperformed" />
@@ -33,6 +32,7 @@
                 <tal:icon tal:replace="structure python:icons.tag('trash')" />
             </a>
         </div>
+        <div class="badge text-white text-bg-${state/color} ms-4" style="width:7rem;">${state/title}</div>
     </div>
     <strong>${context/category_title}</strong>
     <br />

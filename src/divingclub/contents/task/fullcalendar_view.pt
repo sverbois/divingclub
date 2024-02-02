@@ -1,0 +1,40 @@
+<div tal:define="task_url context/absolute_url;state view/state;icons python:context.restrictedTraverse('@@iconresolver');">
+    <div class="float-end">
+        <div class="badge text-white text-bg-${state/color}" style="width:7rem;">${state/title}</div>
+        <div tal:condition="view/is_reviewer" class="d-inline-block">
+            <form action="${task_url}/@@content_status_modify" class="d-inline-block p-1">
+                <input type="hidden" name="workflow_action" value="make_notperformed" />
+                <span tal:replace="structure context/@@authenticator/authenticator" />
+                <button type="submit" class="btn p-1">
+                    <tal:icon tal:replace="structure python:icons.tag('emoji-frown', tag_class='text-danger')" />
+                </button>
+            </form>
+            <form action="${task_url}/@@content_status_modify" class="d-inline-block p-1">
+                <input type="hidden" name="workflow_action" value="make_todo" />
+                <span tal:replace="structure context/@@authenticator/authenticator" />
+                <button type="submit" class="btn p-1">
+                    <tal:icon tal:replace="structure python:icons.tag('emoji-neutral', tag_class='text-warning')" />
+
+                </button>
+            </form>
+            <form action="${task_url}/@@content_status_modify" class="d-inline-block p-1">
+                <input type="hidden" name="workflow_action" value="make_performed" />
+                <span tal:replace="structure context/@@authenticator/authenticator" />
+                <button type="submit" class="btn p-1">
+                    <tal:icon tal:replace="structure python:icons.tag('emoji-smile', tag_class='text-success')" />
+                </button>
+            </form>
+        </div>
+        <div tal:condition="view/is_editor" class="d-inline-block ms-4">
+            <a href="${task_url}/@@edit" class="d-inline-block p-1">
+                <tal:icon tal:replace="structure python:icons.tag('pencil')" />
+            </a>
+            <a href="${task_url}/@@delete_confirmation" class="d-inline-block p-1">
+                <tal:icon tal:replace="structure python:icons.tag('trash')" />
+            </a>
+        </div>
+    </div>
+    <strong>${context/category_title}</strong>
+    <br />
+    <span>${context/manager_fullname}</span>
+</div>

@@ -19,4 +19,14 @@
       layer="divingclub.interfaces.IBrowserLayer"
       />
 
+  <!-- Fullcalendar view -->
+  <browser:page
+      name="fullcalendar_view"
+      for=".content.ITask"
+      class=".views.TaskFullCalendarView"
+      template="fullcalendar_view.pt"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+
 </configure>

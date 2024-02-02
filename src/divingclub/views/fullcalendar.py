@@ -11,7 +11,6 @@ class FullCalendarView(DefaultView):
 class FullCalendarEventsView(DefaultView):
     @property
     def events(self):
-        portal_url = api.portal.get().absolute_url()
         brains = api.content.find(
             context=self.context,
             portal_type="divingclub.Task",
@@ -20,20 +19,7 @@ class FullCalendarEventsView(DefaultView):
         infos = []
         for b in brains:
             event = b.getObject()
-            event_url = event.absolute_url()
-            is_editor = api.user.has_permission("Modify portal content", obj=event)
-            infos_html = f"""<strong>{event.category_title}</strong><br />{event.manager_fullname}"""
-            edit_html = (
-                f"""<a href="{event_url}/@@edit" class="float-end  ps-3"><img src="{portal_url}/++plone++bootstrap-icons/pencil.svg" /></a>"""
-                if is_editor
-                else ""
-            )
-            delete_html = (
-                f"""<a href="{event_url}/@@delete_confirmation" class="float-end ps-3"><img src="{portal_url}/++plone++bootstrap-icons/trash.svg" /></a>"""
-                if is_editor
-                else ""
-            )
-            event_html = f"<div>{delete_html}{edit_html}{infos_html}</div>"
+            event_html = api.content.get_view("fullcalendar_view", event, self.request)()
             infos.append(
                 {
                     "title": event.category_title + " / " + event.manager_fullname,

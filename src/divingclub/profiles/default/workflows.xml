@@ -3,6 +3,7 @@
   <object name="content_folder_workflow" meta_type="Workflow" />
   <object name="content_page_workflow" meta_type="Workflow" />
   <object name="content_registration_workflow" meta_type="Workflow" />
+  <object name="content_task_workflow" meta_type="Workflow" />
   <object name="content_trip_workflow" meta_type="Workflow" />
   <bindings>
     <type type_id="Folder">
@@ -26,6 +27,8 @@
     <type type_id="divingclub.Registration">
       <bound-workflow workflow_id="content_registration_workflow" />
     </type>
-    <type type_id="divingclub.Task" />
+    <type type_id="divingclub.Task">
+      <bound-workflow workflow_id="content_task_workflow" />
+    </type>
   </bindings>
 </object>

@@ -16,6 +16,13 @@ body.userrole-reviewer #plone-contentmenu-workflow {
 #content > header {
   margin-bottom: 0px;
 }
+#content-core h1 a,
+#content-core h2 a {
+  text-decoration: none;
+}
+#content-core h1 {
+  border-bottom: 1px solid var(--bs-secondary);
+}
 
 :root {
   --fc-list-event-hover-bg-color: none;
@@ -57,16 +64,14 @@ body.userrole-reviewer #plone-contentmenu-workflow {
 }
 
 /* Edit toolbar */
-
 #edit-zone .label-state-open {
   color: var(--bs-success);
 }
 #edit-zone .label-state-closed {
   color: var(--bs-danger);
 }
-
 /* Cacher le titre "Ajouter d'un élément" au dessus des items à ajouter*/
-#plone-contentmenu-factories h6.dropdown-header {
+#edit-zone #plone-contentmenu-factories h6.dropdown-header {
   display: none;
 }
 /* Personnalisation de la summary_view*/
@@ -76,11 +81,10 @@ body.template-summary_view #content-core img {
   -o-object-fit: cover;
   object-fit: cover;
 }
-#content-core h1 a,
-#content-core h2 a {
-  text-decoration: none;
+
+/* Personnalisation de la event_listing*/
+#body.template-event_listing {
+  min-width: 90px;
 }
-#content-core h1 {
-  border-bottom: 1px solid var(--bs-secondary);
-}
+
 /*# sourceMappingURL=styles.css.map */

@@ -1,13 +1,17 @@
 /*** NEW COLORS ***/
-// $pink: #EE4793;
+$seba: #696969;
 
-/***  VARIABLES OVERRIDES ***/
+/***  BOOTSTRAP VARIABLE OVERRIDES ***/
 $enable-rounded: false;
-// $primary: $pink;
-// $secondary: yellow;
-$body-bg: #efefef;
+//$primary: #3d8bfd;
+// $secondary: #6c757d; // $gray-600
+$black: #343a40; // $gray-800
+$body-bg: #f8f9fa; // $gray-100
 // $breadcrumb-bg: orange;
 // $body-color: $medium-grey;
 // $font-size-base: 1rem;
 // $h1-font-size: $font-size-base * 3;
 // $h2-font-size: $font-size-base * 2.5;
+$card-bg: #e9ecef; //tint-color($primary, 80%);
+
+/***  PLONE VARIABLE OVERRIDES ***/

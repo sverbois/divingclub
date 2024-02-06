@@ -83,8 +83,6 @@ body.template-summary_view #content-core img {
 }
 
 /* Personnalisation de la event_listing*/
-#body.template-event_listing {
+body.template-event_listing #content .cal_date {
   min-width: 90px;
 }
-
-/*# sourceMappingURL=styles.css.map */

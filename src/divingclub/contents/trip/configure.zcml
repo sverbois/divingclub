@@ -25,10 +25,26 @@
 
   <!-- Registration sheet view -->
   <browser:page
-      name="registration-sheet"
+      name="old-registration-sheet"
       for=".content.ITrip"
       class=".views.TripSheetView"
-      template="registration-sheet.pt"
+      template="old-registration-sheet.pt"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+  <browser:page
+      name="registration-sheet-html"
+      for=".content.ITrip"
+      class=".views.TripSheetView"
+      template="registration-sheet-html.pt"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+
+  <browser:page
+      name="registration-sheet-pdf"
+      for=".content.ITrip"
+      class=".views.TripSheetPdfView"
       permission="zope2.View"
       layer="divingclub.interfaces.IBrowserLayer"
       />

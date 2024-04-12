@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="h-100" lang="fr" xml:lang="fr" tal:define="portal_state python:context.restrictedTraverse('@@plone_portal_state');
+          context_state python:context.restrictedTraverse('@@plone_context_state');
+          plone_view python:context.restrictedTraverse('@@plone');
+          icons python:context.restrictedTraverse('@@iconresolver');
+          plone_layout python:context.restrictedTraverse('@@plone_layout');
+          lang python:portal_state.language();
+          view nocall:view | nocall: plone_view;
+          dummy python: plone_layout.mark_view(view);
+          portal_url python:portal_state.portal_url();
+          checkPermission python:context.restrictedTraverse('portal_membership').checkPermission;
+          site_properties python:context.restrictedTraverse('portal_properties').site_properties;
+          ajax_include_head python:request.get('ajax_include_head', False);
+          ajax_load python:False;">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <style>
+            html {
+                font-size: 12px;
+            }
+            h1 {
+                font-size: 1.7rem;
+                margin: 0px;
+            }
+            ul {
+                list-style-position: inside;
+                padding-left: 8px;
+                list-style-type: circle;
+            }
+            @media print {
+                @page {
+                    size: A4;
+                    margin: 10mm 5mm;
+                }
+            }
+            .new-page {
+                page-break-before: always;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            table#header {
+                font-size: 13px;
+            }
+            table#registrations {
+                margin-top: 30px;
+            }
+            table#registrations th {
+                border: 1px solid #bfc1c4;
+            }
+            table#registrations td {
+                border: 1px solid #dee2e6;
+                padding: 0px;
+                margin:0px;
+            }
+            table#registrations tr:first-child {
+                background-color: #e2e3e5;
+                padding: 0.5rem 0rem;
+                font-size: 1.2rem;
+            }
+            table#registrations tr:first-child th {
+                padding: 10px 0px;
+            }
+            div.registration-group {
+                border-top: 1px solid #dee2e6;
+                display: block;
+                width: 100%;
+            }
+            div.registration-group span {
+                display: inline-block;
+                text-align: center;
+                padding: 6px 0px 3px
+            }
+            div.registration-group span.registration-number {
+                width: 1.5rem;
+                border-right: 1px solid #dee2e6;
+            }
+            div.registration-group span.registration-fullname {
+            }
+            div.registration-group span.registration-info {
+                float: right;
+                font-size: 0.8rem;
+                padding: 7px 3px 0px
+            }
+
+        table#dive-sheet {
+                margin-top: 35px;
+                border-collapse: separate;
+                border-spacing: 5px;
+        }
+        table.dive-team {
+            border: 1px solid #666;
+            border-collapse: collapse;
+        }
+        table.dive-team td {
+            height: 1.6rem;
+            border: 1px solid #666;
+            padding: 2px;
+            text-decoration: underline;
+            vertical-align: top;
+            text-align: center;
+        }
+        table.dive-team td.dive-team-title {
+            text-decoration:none;
+            vertical-align:middle;
+            background-color: #e2e3e5;
+            font-size: 1.2rem;
+        }
+        section#desideratas {
+            margin-top: 30px;
+        }
+        section#desideratas h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        section#desideratas div:first-of-type {
+            border-top: 1px solid #dee2e6;
+        }
+        section#desideratas div.desiderata {
+            font-size: 1.5rem;
+            border-bottom: 1px solid #dee2e6;
+            padding: 12px 0px 10px;
+        }
+        </style>
+        <div tal:define="registrations_by_group view/registrations_by_group">
+            <table id="header">
+                <tr>
+                    <td rowspan="2">
+                        <img style="height:80px" src="${portal_url}/++theme++divingclub/images/logo.png" alt="EPSM Ciney" />
+                    </td>
+                    <td colspan="3">
+                        <h1>Ecole de plongée sous-marine de Ciney (EPSM Ciney)</h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <strong>Lieu</strong> : ${context/location}
+                        </div>
+                        <div>
+                            <strong>Date</strong> : ${context/start/date}
+                        </div>
+                        <div>
+                            <strong>Responsable</strong> : ${context/manager_fullname}
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <strong>Secours Europe</strong> : 112
+                        </div>
+                        <div>
+                            <strong>Secours France</strong> : 15
+                        </div>
+                        <div>
+                            <strong>Secours Bateau</strong> : VHF 16
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <strong>DAN en Belgique gratuit</strong> : 0800 12 382
+                        </div>
+                        <div>
+                            <strong>DAN Belgique</strong> : +32 22 62 22 82
+                        </div>
+                        <div>
+                            <strong>DAN Europe</strong> : +39 06 42 11 56 85
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table id="registrations">
+                <tr>
+                    <th>MN/MF/MC/AM</th>
+                    <th>Plongeurs 4*/3*</th>
+                    <th>Plongeurs 2*</th>
+                    <th>Plongeurs 1*</th>
+                    <th>Plongeurs NH</th>
+                    <th>Dauphins</th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <ul class="m-0 ps-2">
+                            <li>avec 2* : max 20m</li>
+                            <li>avec 3* : max 30m</li>
+                            <li>avec 3*PPA : max 40m</li>
+                            <li>avec AM/M : max 40m</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="m-0 ps-2">
+                            <li>avec min 3*</li>
+                            <li>prof max de 20m</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="m-0 ps-2">
+                            <li>plongée 1, 2 avec M</li>
+                            <li>plongée 3, 4, 5 avec AM</li>
+                            <li>prof max 15m</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="m-0 ps-2">
+                            <li>avec certifié enfant</li>
+                            <li>8-9 ans : max 7m</li>
+                            <li>10-11 ans : max 10m</li>
+                            <li>12-13 ans : max 15m</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td tal:repeat ="group python:registrations_by_group.values()">
+                        <div class="registration-group" tal:repeat="item group">
+                            <span class="registration-info">${item/info}</span>
+                            <span class="registration-number">${repeat/item/number}</span>
+                            <span class="registration-fullname">${item/fullname}</span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table id="dive-sheet">
+                <tr tal:repeat="row python:range(5)">
+                    <td tal:repeat="column python:range(3)">
+                        <table class="dive-team">
+                            <tr>
+                                <td class="dive-team-title" style="width:50%;">Palanquée ${python:repeat['row'].index * 3 + repeat['column'].number()}</td>
+                                <td rowspan="6" style="">Ex.</td>
+                                <td rowspan="2" style="width:20%;">H.E.</td>
+                                <td rowspan="2" style="width:20%;">H.S.</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td rowspan="2">Prof.</td>
+                                <td rowspan="2">Durée</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td rowspan="2" colspan="2">Durée</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <section id="desideratas" class="new-page">
+                <h1>Désideratas</h1>
+                <div tal:repeat="r view/registrations_with_whish" class="desiderata">
+                    <tal:icon tal:replace="structure python:icons.tag('person', tag_class='h4')" />
+                    <strong>${r/fullname}</strong> ${r/whish}
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

@@ -86,7 +86,7 @@ class TripSheetView(BrowserView):
                 )
         # ADD Empty users to fill the table
         for group in infos.values():
-            empty_group_count = 12 - len(group)
+            empty_group_count = 10 - len(group)
             for num in range(empty_group_count):
                 group.append({"fullname": "", "info": "", "whish": ""})
         return infos
@@ -94,3 +94,39 @@ class TripSheetView(BrowserView):
     @property
     def registrations_with_whish(self):
         return [r for group in self.registrations_by_group.values() for r in group if r["whish"]]
+
+
+class TripSheetPdfView(BrowserView):
+
+    def __call__(self):
+        html_view = api.content.get_view(name="registration-sheet-html", context=self.context, request=self.request)
+        html = html_view().encode("utf-8")
+
+        html_file = tempfile.NamedTemporaryFile(suffix=".html")
+        html_file.write(html)
+        html_file.flush()
+        pdf_file = tempfile.NamedTemporaryFile(suffix=".pdf")
+        subprocess.call(
+            [
+                "wkhtmltopdf",
+                "--quiet",
+                "--print-media-type",
+                "--page-size",
+                "A4",
+                "--margin-top",
+                "10mm",
+                "--margin-bottom",
+                "10mm",
+                "--margin-left",
+                "5mm",
+                "--margin-right",
+                "5mm",
+                html_file.name,
+                pdf_file.name,
+            ]
+        )
+
+        filename = f"{self.context.title}.pdf"
+        self.request.response.setHeader("Content-Type", "application/pdf")
+        self.request.response.setHeader("Content-Disposition", "inline;filename={}".format(filename))
+        return pdf_file.read()

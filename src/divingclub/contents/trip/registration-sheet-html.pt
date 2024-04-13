@@ -20,7 +20,7 @@
     <body>
         <style>
             * {
-                font-family: "Times New Roman", serif;
+                font-family: "Times", serif;
             }
             html {
                 font-size: 12px;

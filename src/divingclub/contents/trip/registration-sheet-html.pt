@@ -19,6 +19,9 @@
     </head>
     <body>
         <style>
+            * {
+                font-family: "Times New Roman", serif;
+            }
             html {
                 font-size: 12px;
             }

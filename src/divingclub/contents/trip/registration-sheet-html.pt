@@ -16,8 +16,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    </head>
-    <body>
         <style>
             * {
                 font-family: "Times", serif;
@@ -130,6 +128,8 @@
             padding: 12px 0px 10px;
         }
         </style>
+    </head>
+    <body>
         <div tal:define="registrations_by_group view/registrations_by_group">
             <table id="header">
                 <tr>

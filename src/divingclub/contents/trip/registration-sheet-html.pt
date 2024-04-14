@@ -26,10 +26,6 @@
             html {
                 font-size: 12px;
             }
-            h1 {
-                font-size: 1.7rem;
-                margin: 0px;
-            }
             ul {
                 list-style-position: inside;
                 padding-left: 8px;
@@ -49,7 +45,11 @@
                 border-collapse: collapse;
             }
             table#header {
-                font-size: 13px;
+                font-size: 15px;
+            }
+            table#header h1 {
+                font-size: 24px;
+                margin: 0px 0px 10px;
             }
             table#registrations {
                 margin-top: 30px;
@@ -65,8 +65,8 @@
             }
             table#registrations tr:first-child {
                 background-color: #e2e3e5;
-                padding: 0.5rem 0rem;
-                font-size: 1.2rem;
+                padding: 6px 0px;
+                font-size: 15px;
             }
             table#registrations tr:first-child th {
                 padding: 10px 0px;
@@ -82,14 +82,14 @@
                 padding: 6px 0px 3px
             }
             div.registration-group span.registration-number {
-                width: 1.5rem;
+                width: 18px;
                 border-right: 1px solid #dee2e6;
             }
             div.registration-group span.registration-fullname {
             }
             div.registration-group span.registration-info {
                 float: right;
-                font-size: 0.8rem;
+                font-size: 10px;
                 padding: 7px 3px 0px
             }
 
@@ -103,7 +103,7 @@
             border-collapse: collapse;
         }
         table.dive-team td {
-            height: 1.6rem;
+            height: 19px;
             border: 1px solid #666;
             padding: 2px;
             text-decoration: underline;
@@ -114,20 +114,20 @@
             text-decoration:none;
             vertical-align:middle;
             background-color: #e2e3e5;
-            font-size: 1.2rem;
+            font-size: 15px;
         }
         section#desideratas {
             margin-top: 30px;
         }
         section#desideratas h1 {
-            font-size: 3rem;
+            font-size: 36px;
             margin-bottom: 20px;
         }
         section#desideratas div:first-of-type {
             border-top: 1px solid #dee2e6;
         }
         section#desideratas div.desiderata {
-            font-size: 1.5rem;
+            font-size: 18px;
             border-bottom: 1px solid #dee2e6;
             padding: 12px 0px 10px;
         }
@@ -138,7 +138,7 @@
             <table id="header">
                 <tr>
                     <td rowspan="2">
-                        <img style="height:80px" src="${portal_url}/++theme++divingclub/images/logo.png" alt="EPSM Ciney" />
+                        <img style="height:100px" src="${portal_url}/++theme++divingclub/images/logo.png" alt="EPSM Ciney" />
                     </td>
                     <td colspan="3">
                         <h1>Ecole de plongée sous-marine de Ciney (EPSM Ciney)</h1>

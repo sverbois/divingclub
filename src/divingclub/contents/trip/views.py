@@ -116,7 +116,7 @@ class TripSheetPdfView(BrowserView):
                 "--margin-top",
                 "10mm",
                 "--margin-bottom",
-                "10mm",
+                "5mm",
                 "--margin-left",
                 "5mm",
                 "--margin-right",

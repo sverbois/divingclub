@@ -49,7 +49,7 @@
             }
             table#header h1 {
                 font-size: 24px;
-                margin: 0px 0px 10px;
+                margin: 0px;
             }
             table#registrations {
                 margin-top: 30px;
@@ -255,7 +255,7 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td rowspan="2" colspan="2">Durée</td>
+                                <td rowspan="2" colspan="2">Paliers</td>
                             </tr>
                             <tr>
                                 <td></td>

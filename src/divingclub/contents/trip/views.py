@@ -79,7 +79,7 @@ class TripSheetView(BrowserView):
             if group in infos:
                 infos[group].append(
                     {
-                        "fullname": user.getProperty("lastname")[:11] + " " + user.getProperty("firstname")[:1] + ".",
+                        "fullname": user.getProperty("lastname")[:10] + " " + user.getProperty("firstname")[:3] + ".",
                         "info": user_info,
                         "whish": r.whish.strip() if r.whish else "",
                     }

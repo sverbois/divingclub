@@ -1,0 +1,23 @@
+<div id="week-listing" tal:define="icons python:context.restrictedTraverse('@@iconresolver');tasks_by_day view/tasks_by_day;">
+    <h2 class="d-flex align-items-center bg-secondary-subtle">
+        <button hx-get="${view/previous_listing_url}" hx-trigger="click" hx-target="#week-listing" hx-swap="outerHTML" hx-replace-url="" type="button" class="btn btn-secondary ">
+            <tal:icon tal:replace="structure python:icons.tag('chevron-left')" />
+        </button>
+        <button hx-get="${view/next_listing_url}" hx-trigger="click" hx-target="#week-listing" hx-swap="outerHTML" type="button" class="btn btn-secondary me-4">
+            <tal:icon tal:replace="structure python:icons.tag('chevron-right')" />
+        </button>
+        <div class="me-4" style="flex-grow: 2">Semaine ${view/week}</div>
+        <div class="fs-5 d-none d-md-inline me-4">${python:view.start_datetime.strftime("%d %B %Y")} - ${python:view.end_datetime.strftime("%d %B %Y")}</div>
+    </h2>
+    <div tal:condition="not:tasks_by_day" class="text-center bg-secondary-subtle mt-4 p-4">
+        Aucune tâche pour cette semaine
+    </div>
+    <div tal:repeat="day tasks_by_day">
+        <h5 class="text-capitalize mt-3">${python:day.strftime("%A %d %B %Y")}</h5>
+        <div tal:repeat="task python:tasks_by_day[day]" tal:replace="structure python:task.restrictedTraverse('@@week_item')()" />
+    </div>
+    <!-- <h3>TODO</h3>
+    <time class="pat-display-time" datetime="2000-10-31T01:30Z" data-pat-display-time="output-format: MMMM YYYY">2000-10-31T01:30Z</time>
+    <br />
+    <time class="pat-display-time" datetime="${python:view.start_datetime.isoformat()}" data-pat-display-time="output-format: MMMM YYYY">${python:view.start_datetime.isoformat()}</time> -->
+</div>

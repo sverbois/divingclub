@@ -28,5 +28,50 @@
       permission="zope2.View"
       layer="divingclub.interfaces.IBrowserLayer"
       />
+  <browser:page
+      name="fullcalendar-events"
+      for="*"
+      class=".fullcalendar.FullCalendarEventsView"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+  <browser:page
+      name="fullcalendar"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      class=".fullcalendar.FullCalendarView"
+      template="fullcalendar.pt"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Fullcalendar view"
+      />
+
+  <!-- Week view -->
+  <browser:page
+      name="week_view"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      class=".week.WeekViewView"
+      template="week_view.pt"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      menu="plone_displayviews"
+      title="Task week view"
+      />
+  <browser:page
+      name="week_listing"
+      for="plone.app.contenttypes.interfaces.IFolder"
+      class=".week.WeekListingView"
+      template="week_listing.pt"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+  <browser:page
+      name="week_item"
+      for=".content.ITask"
+      class=".week.WeekItemView"
+      template="week_item.pt"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
 
 </configure>

@@ -1,7 +1,10 @@
 import datetime
+import locale
 
 from plone import api
 from Products.Five.browser import BrowserView
+
+locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
 
 
 class TaskView(BrowserView):
@@ -9,7 +12,10 @@ class TaskView(BrowserView):
 
     def __call__(self):
         parent = self.context.__parent__
-        url = parent.absolute_url()
+        parent_url = parent.absolute_url()
+        year = self.context.start.year
+        week = self.context.start.isocalendar()[1]
+        url = f"{parent_url}?week={week}&year={year}"
         self.request.response.redirect(url)
 
 

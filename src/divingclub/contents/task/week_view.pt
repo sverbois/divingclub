@@ -1,0 +1,27 @@
+<html metal:use-macro="here/main_template/macros/master">
+    <metal:javascriptslot fill-slot="javascript_head_slot">
+        <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script>
+    </metal:javascriptslot>
+
+    <metal:main fill-slot="content-core">
+        <?python
+            request_url = request.get('ACTUAL_URL')
+            request_week = request.get('week','')
+            request_year = request.get('year','')
+            week_parameter = f"?week={request_week}" if request_week else ""
+            year_parameter = f"&year={request_year}" if week_parameter and request_year else ""
+            listing_url = f"{context.absolute_url()}/@@week_listing{week_parameter}{year_parameter}"
+            ?>
+
+        <div id="week-listing" hx-get="${listing_url}" hx-trigger="load" hx-swap="outerHTML" hx-replace-url="${request_url}" />
+        <script>
+            let $weekListing = $('#week-listing');
+            document.addEventListener('htmx:afterRequest', function(evt) {
+                    #alert(evt.detail.target.id);
+                    console.log("SSSSSSSSSSSS")
+                    console.log(window);
+                    console.log(window.__patternslib_registry);
+            });
+        </script>
+    </metal:main>
+</html>

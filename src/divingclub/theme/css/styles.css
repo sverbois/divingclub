@@ -31,6 +31,20 @@ body.userrole-reviewer #plone-contentmenu-workflow {
   --fc-button-border-color: var(--bs-gray-600);
 }
 
+.task {
+}
+.task-pool {
+  background-color: #9ec5fe;
+}
+.task-bar {
+  background-color: #ffe69c;
+}
+.task-inflation {
+  background-color: #a3cfbb;
+}
+
+/* FullCalendar */
+
 .fc .fc-scroller-liquid {
   height: auto; /* display all list on smartphone */
 }
@@ -46,15 +60,6 @@ body.userrole-reviewer #plone-contentmenu-workflow {
 }
 .fc-toolbar-title {
   display: inline-block;
-}
-.fc-event.task-pool {
-  background-color: #9ec5fe;
-}
-.fc-event.task-bar {
-  background-color: #ffe69c;
-}
-.fc-event.task-inflation {
-  background-color: #a3cfbb;
 }
 .fc-list-day-text,
 .fc-today-button,

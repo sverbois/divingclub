@@ -2,24 +2,6 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     >
-
-  <browser:page
-      name="fullcalendar-events"
-      for="*"
-      class=".fullcalendar.FullCalendarEventsView"
-      permission="zope2.View"
-      layer="divingclub.interfaces.IBrowserLayer"
-      />
-  <browser:page
-      name="fullcalendar"
-      for="plone.app.contenttypes.interfaces.IFolder"
-      class=".fullcalendar.FullCalendarView"
-      template="fullcalendar.pt"
-      permission="zope2.View"
-      layer="divingclub.interfaces.IBrowserLayer"
-      menu="plone_displayviews"
-      title="Fullcalendar view"
-      />
   <browser:page
       name="personal-information"
       for="plone.app.layout.navigation.interfaces.INavigationRoot"

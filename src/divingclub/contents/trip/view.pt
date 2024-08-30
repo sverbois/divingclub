@@ -24,6 +24,8 @@
             </div>
         </div>
         <tal:if condition="python:user.has_role(['Authenticated',], context)">
+            <p class="lead">Le moniteur responsable gère l'organisation des palanquées dans le respect des normes LIFRAS et en fonction des candidats aux différents brevets en cours présent à la sortie. Il tient alors compte du mieux qu’il peut des désidératas en fonction de l’encadrement disponible.</p>
+
             <h2>Inscriptions (${python:len(registrations)})</h2>
             <table class="table table-striped" tal:condition="registrations">
                 <thead>

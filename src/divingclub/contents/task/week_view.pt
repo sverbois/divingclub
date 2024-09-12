@@ -15,12 +15,10 @@
 
         <div id="week-listing" hx-get="${listing_url}" hx-trigger="load" hx-swap="outerHTML" hx-replace-url="${request_url}" />
         <script>
-            let $weekListing = $('#week-listing');
             document.addEventListener('htmx:afterRequest', function(evt) {
+                    let $weekListing = $('#week-listing');
                     #alert(evt.detail.target.id);
-                    console.log("SSSSSSSSSSSS")
-                    console.log(window);
-                    console.log(window.__patternslib_registry);
+                    #console.log("SSSSSSSSSSSS")
             });
         </script>
     </metal:main>

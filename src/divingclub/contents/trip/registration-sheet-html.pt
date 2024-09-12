@@ -116,6 +116,12 @@
             background-color: #e2e3e5;
             font-size: 15px;
         }
+        table.dive-team td.dive-team-member {
+            text-decoration:none;
+            vertical-align:middle;
+            text-align: left;
+            padding-left: 5px;
+        }
         section#desideratas {
             margin-top: 30px;
         }
@@ -232,32 +238,32 @@
                     </td>
                 </tr>
             </table>
-            <table id="dive-sheet">
+            <table id="dive-sheet" tal:define="registrations_by_team view/registrations_by_team">
                 <tr tal:repeat="row python:range(5)">
                     <td tal:repeat="column python:range(3)">
-                        <table class="dive-team" tal:define="number python:repeat['row'].index * 3 + repeat['column'].number()">
+                        <table class="dive-team" tal:define="number python:repeat['row'].index * 3 + repeat['column'].number();members python:registrations_by_team[number]">
                             <tr>
                                 <td class="dive-team-title" style="width:50%;">Palanquée ${number}</td>
                                 <td rowspan="2" style="width:20%;">H.E.</td>
                                 <td rowspan="2" style="width:20%;">H.S.</td>
                             </tr>
                             <tr>
-                                <td></td>
+                                <td class="dive-team-member">${python:members[0]["fullname"] if len(members) > 0 else ""}</td>
                             </tr>
                             <tr>
-                                <td></td>
+                                <td class="dive-team-member">${python:members[1]["fullname"] if len(members) > 1 else ""}</td>
                                 <td rowspan="2">Prof.</td>
                                 <td rowspan="2">Durée</td>
                             </tr>
                             <tr>
-                                <td></td>
+                                <td class="dive-team-member">${python:members[2]["fullname"] if len(members) > 2 else ""}</td>
                             </tr>
                             <tr>
-                                <td></td>
+                                <td class="dive-team-member">${python:members[3]["fullname"] if len(members) > 3 else ""}</td>
                                 <td rowspan="2" colspan="2">Exercice(s)</td>
                             </tr>
                             <tr>
-                                <td></td>
+                                <td class="dive-team-member">${python:members[4]["fullname"] if len(members) > 4 else ""}</td>
                             </tr>
                         </table>
                     </td>

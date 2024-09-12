@@ -1,3 +1,5 @@
+import json
+
 from collective.taxonomy.interfaces import ITaxonomy
 from plone import api
 from plone import schema
@@ -27,8 +29,16 @@ class ITrip(model.Schema):
         title="Commentaires",
         required=False,
     )
+    teams = schema.JSONField(
+        title="Palanquées",
+        required=False,
+        schema=json.dumps({"type": "array", "items": {"type": "array", "items": {"type": "string"}}}),
+        default=[],
+        missing_value=[],
+    )
 
     # Widgets
+    directives.omitted("teams")
     directives.widget("manager", AjaxSelectFieldWidget)
 
 

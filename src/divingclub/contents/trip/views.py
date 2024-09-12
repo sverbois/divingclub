@@ -1,3 +1,4 @@
+import json
 import subprocess
 import tempfile
 
@@ -6,6 +7,7 @@ from plone.dexterity.browser.view import DefaultView
 from Products.Five.browser import BrowserView
 
 from divingclub.vocabularies import DIVER_CATEGORY_TO_ACRONYM
+from divingclub.vocabularies import DIVER_CATEGORY_TO_COLOR
 from divingclub.vocabularies import DIVER_CATEGORY_TO_GROUP
 
 STATE_INFOS = {
@@ -55,6 +57,24 @@ class TripView(DefaultView):
 
 class TripSheetView(BrowserView):
     @property
+    def registrations_by_team(self):
+        registrations_by_team = {i: [] for i in range(1, 16)}
+        teams = self.context.teams
+        for number, team in enumerate(teams):
+            for uid in team:
+                registration = api.content.get(UID=uid)
+                if registration:
+                    user = registration.user
+                    category = user.getProperty("diver_category")
+                    registrations_by_team[number + 1].append(
+                        {
+                            "fullname": registration.participant_fullname[:20],
+                            "category": DIVER_CATEGORY_TO_ACRONYM.get(category),
+                        }
+                    )
+        return registrations_by_team
+
+    @property
     def registrations_by_group(self):
         items = get_registrations(self.context, only_accepted=True)
         infos = {
@@ -79,7 +99,7 @@ class TripSheetView(BrowserView):
             if group in infos:
                 infos[group].append(
                     {
-                        "fullname": user.getProperty("lastname")[:10] + " " + user.getProperty("firstname")[:3] + ".",
+                        "fullname": user.getProperty("lastname")[:10] + " " + user.getProperty("firstname")[:5] + ".",
                         "info": user_info,
                         "whish": r.whish.strip() if r.whish else "",
                     }
@@ -130,3 +150,37 @@ class TripSheetPdfView(BrowserView):
         self.request.response.setHeader("Content-Type", "application/pdf")
         self.request.response.setHeader("Content-Disposition", "inline;filename={}".format(filename))
         return pdf_file.read()
+
+
+class MakeTeamsView(BrowserView):
+    @property
+    def registrations(self):
+        registrations = get_registrations(self.context, only_accepted=True)
+        teams = self.context.teams
+        registration_to_team = {uid: number + 1 for number, team in enumerate(teams) for uid in team}
+        infos = []
+        for registration in registrations:
+            user = registration.user
+            category = user.getProperty("diver_category")
+            registration_uid = registration.UID()
+            infos.append(
+                {
+                    "uid": registration_uid,
+                    "fullname": registration.participant_fullname[:20],
+                    "category": DIVER_CATEGORY_TO_ACRONYM.get(category),
+                    "team": registration_to_team.get(registration_uid, 0),
+                    "color": DIVER_CATEGORY_TO_COLOR.get(category, "dark"),
+                }
+            )
+        return infos
+
+
+class StoreTeamsView(BrowserView):
+    def __call__(self):
+        if self.request.method == "POST":
+            json_teams = self.request.form.get("teams")
+            if json_teams:
+                self.context.teams = json.loads(json_teams)
+                self.context.reindexObject()
+                api.portal.show_message(message="L'organisattion des palanquées a été sauvée.", type="info")
+        return self.request.response.redirect(self.context.absolute_url())

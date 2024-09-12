@@ -59,4 +59,22 @@
       layer="divingclub.interfaces.IBrowserLayer"
       />
 
+  <!-- Make teams -->
+  <browser:page
+      name="make-teams"
+      for=".content.ITrip"
+      class=".views.MakeTeamsView"
+      template="make-teams.pt"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+  <!-- Store teams -->
+  <browser:page
+      name="store-teams"
+      for=".content.ITrip"
+      class=".views.StoreTeamsView"
+      permission="zope2.View"
+      layer="divingclub.interfaces.IBrowserLayer"
+      />
+
 </configure>

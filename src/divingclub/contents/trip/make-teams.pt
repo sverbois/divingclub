@@ -1,0 +1,75 @@
+<html metal:use-macro="here/main_template/macros/master">
+    <metal:javascriptslot fill-slot="javascript_head_slot">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
+    </metal:javascriptslot>
+    <metal:main fill-slot="content" tal:define="registrations view/registrations">
+        <style>
+            #registrations {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 10px;
+            }
+            #registrations .list-group-item {
+                border-top-width: 1px;
+            }
+            #teams {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 10px;
+            }
+            #teams .card ul {
+                min-height: 120px;
+            }
+        </style>
+        <h2>Inscriptions</h2>
+        <ul id="registrations" class="list-group">
+            <tal:block tal:repeat="regis registrations">
+                <li tal:condition="not:regis/team" class="list-group-item registration" id="${regis/uid}">
+                    ${regis/fullname} <span class="badge rounded-pill text-bg-${regis/color}">${regis/category}</span>
+                </li>
+            </tal:block>
+        </ul>
+        <h2>Palanquées</h2>
+        <div id="teams">
+            <div class="card" tal:repeat="item python:range(15)">
+                <div class="card-header text-uppercase text-center">Palanquée ${repeat/item/number}</div>
+                <ul class="team list-group list-group-flush">
+                    <tal:block tal:repeat="regis registrations">
+                        <li tal:condition="python:regis['team']==repeat['item'].number()" class="list-group-item registration" id="${regis/uid}">
+                            ${regis/fullname} <span class="badge rounded-pill text-bg-${regis/color}">${regis/category}</span>
+                        </li>
+                    </tal:block>
+                </ul>
+            </div>
+        </div>
+        <form method="post" action="${context/absolute_url}/@@store-teams" onsubmit="updateFormTeam()">
+            <input id="form_teams" type="hidden" name="teams" />
+            <input type="submit" class="btn btn-primary" value="Enregistrer les palanquées" />
+        </form>
+        <script>
+         new Sortable(document.getElementById("registrations"), {
+            group: "shared",
+            animation: 150,
+        });
+        document.querySelectorAll(".team").forEach((team) => {
+            new Sortable(team, {
+                group: "shared",
+                animation: 150,
+                });
+        });
+        function updateFormTeam() {
+            const teams = document.querySelectorAll(".team");
+            const form_teams = document.getElementById("form_teams");
+            const teamsData = [];
+            teams.forEach((team, index) => {
+                const members = Array.from(team.querySelectorAll(".registration")).map(registration => registration.id);
+                if (members.length > 0) {
+                    teamsData.push(members);
+                }
+            });
+            const jsonString = JSON.stringify(teamsData, null, 2);
+            form_teams.value = jsonString;
+        };
+        </script>
+    </metal:main>
+</html>

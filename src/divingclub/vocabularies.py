@@ -65,12 +65,36 @@ DIVER_CATEGORY_TO_GROUP = {
     "instructor3": "moniteur",
 }
 DIVER_CATEGORY_TO_ACRONYM = {
+    "child0": "🐬",
+    "child1": "🐬",
+    "child2": "🐬",
+    "child3": "🐬",
+    "diver0": "NH",
+    "diver1": "1★",
+    "diver2": "2★",
+    "diver3": "3★",
     "diver3ppa": "PPA",
     "diver4": "PPA",
     "instructor0": "AM",
     "instructor1": "MC",
     "instructor2": "MF",
     "instructor3": "MN",
+}
+DIVER_CATEGORY_TO_COLOR = {
+    "child0": "danger",
+    "child1": "danger",
+    "child2": "danger",
+    "child3": "danger",
+    "diver0": "danger",
+    "diver1": "warning",
+    "diver2": "secondary",
+    "diver3": "primary",
+    "diver3ppa": "primary",
+    "diver4": "primary",
+    "instructor0": "success",
+    "instructor1": "success",
+    "instructor2": "success",
+    "instructor3": "success",
 }
 
 

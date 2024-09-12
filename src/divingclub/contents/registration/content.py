@@ -76,7 +76,7 @@ class Registration(Item):
     @property
     def participant_fullname(self):
         user = self.user
-        user_fullname = user.getProperty("fullname") if user else self.participant
+        user_fullname = user.getProperty("firstname") + " " + user.getProperty("lastname") if user else self.participant
         return user_fullname
 
     @property

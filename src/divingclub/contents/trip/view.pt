@@ -101,7 +101,7 @@
                 <a tal:condition="python:checkPermission('divingclub: Add Registration', context)" tal:attributes="href string:${context/absolute_url}/++add++divingclub.Registration" class="col-12 col-md-3 text-white btn ${button_inscription_class}">Ajouter une inscription</a>
                 <tal:ready tal:condition="python:not pending_registrations">
                     <tal:if tal:condition="python:user.has_role(['Manager','Editor',], context)">
-                        <a tal:attributes="href string:${context/absolute_url}/@@make-teams" class="col-12 col-md-3 btn btn-info" target="_blank">Réaliser les palanquées</a>
+                        <a tal:attributes="href string:${context/absolute_url}/@@make-teams" class="col-12 col-md-3 btn btn-info">Réaliser les palanquées</a>
                     </tal:if>
                     <a tal:attributes="href string:${context/absolute_url}/@@registration-sheet-pdf" class="col-12 col-md-3 btn btn-info" target="_blank">Feuille d'inscriptions</a>
                     <tal:if tal:condition="python:user.has_role(['Manager','Reviewer',], context)">

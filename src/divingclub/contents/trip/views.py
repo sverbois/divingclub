@@ -87,9 +87,14 @@ class TripSheetView(BrowserView):
         }
         for r in items:
             user = r.user
+            firstname = user.getProperty("firstname")
+            lastname = user.getProperty("lastname")
             category = user.getProperty("diver_category")
             group = DIVER_CATEGORY_TO_GROUP.get(category)
-
+            if category.startswith("instructor") or category.startswith("child"):
+                fullname = f"{lastname} {firstname[:1]}."
+            else:
+                fullname = f"{lastname} {firstname}"
             if group == "moniteur":
                 user_info = DIVER_CATEGORY_TO_ACRONYM.get(category)
             elif group == "trois":
@@ -99,14 +104,14 @@ class TripSheetView(BrowserView):
             if group in infos:
                 infos[group].append(
                     {
-                        "fullname": user.getProperty("lastname")[:10] + " " + user.getProperty("firstname")[:5] + ".",
+                        "fullname": fullname,
                         "info": user_info,
                         "whish": r.whish.strip() if r.whish else "",
                     }
                 )
         # ADD Empty users to fill the table
         for group in infos.values():
-            empty_group_count = 10 - len(group)
+            empty_group_count = 9 - len(group)
             for num in range(empty_group_count):
                 group.append({"fullname": "", "info": "", "whish": ""})
         return infos

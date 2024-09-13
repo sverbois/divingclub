@@ -25,14 +25,6 @@
 
   <!-- Registration sheet view -->
   <browser:page
-      name="old-registration-sheet"
-      for=".content.ITrip"
-      class=".views.TripSheetView"
-      template="old-registration-sheet.pt"
-      permission="zope2.View"
-      layer="divingclub.interfaces.IBrowserLayer"
-      />
-  <browser:page
       name="registration-sheet-html"
       for=".content.ITrip"
       class=".views.TripSheetView"
@@ -40,21 +32,10 @@
       permission="zope2.View"
       layer="divingclub.interfaces.IBrowserLayer"
       />
-
   <browser:page
       name="registration-sheet-pdf"
       for=".content.ITrip"
       class=".views.TripSheetPdfView"
-      permission="zope2.View"
-      layer="divingclub.interfaces.IBrowserLayer"
-      />
-
-  <!-- Team sheet view -->
-  <browser:page
-      name="team-sheet"
-      for=".content.ITrip"
-      class=".views.TripSheetView"
-      template="team-sheet.pt"
       permission="zope2.View"
       layer="divingclub.interfaces.IBrowserLayer"
       />
@@ -65,15 +46,14 @@
       for=".content.ITrip"
       class=".views.MakeTeamsView"
       template="make-teams.pt"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
       layer="divingclub.interfaces.IBrowserLayer"
       />
-  <!-- Store teams -->
   <browser:page
       name="store-teams"
       for=".content.ITrip"
       class=".views.StoreTeamsView"
-      permission="zope2.View"
+      permission="cmf.ModifyPortalContent"
       layer="divingclub.interfaces.IBrowserLayer"
       />
 

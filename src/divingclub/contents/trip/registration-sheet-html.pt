@@ -239,10 +239,10 @@
                     </td>
                 </tr>
             </table>
-            <table id="dive-sheet" tal:define="registrations_by_team view/registrations_by_team">
+            <table id="dive-sheet" tal:define="registrations_by_team python:view.registrations_by_team if view.current_user.has_role(['Manager','Editor',], context) else {}">
                 <tr tal:repeat="row python:range(5)">
                     <td tal:repeat="column python:range(3)">
-                        <table class="dive-team" tal:define="number python:repeat['row'].index * 3 + repeat['column'].number();members python:registrations_by_team[number]">
+                        <table class="dive-team" tal:define="number python:repeat['row'].index * 3 + repeat['column'].number();members python:registrations_by_team.get(number,[])">
                             <tr>
                                 <td class="dive-team-title" style="width:50%;">Palanquée ${number}</td>
                                 <td rowspan="2" style="width:20%;">H.E.</td>

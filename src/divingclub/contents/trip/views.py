@@ -57,6 +57,10 @@ class TripView(DefaultView):
 
 class TripSheetView(BrowserView):
     @property
+    def current_user(self):
+        return api.user.get_current()
+
+    @property
     def registrations_by_team(self):
         registrations_by_team = {i: [] for i in range(1, 16)}
         teams = self.context.teams
@@ -158,25 +162,35 @@ class TripSheetPdfView(BrowserView):
 
 
 class MakeTeamsView(BrowserView):
+    def _get_registration_infos(self, registration):
+        uid = registration.UID()
+        user = registration.user
+        category = user.getProperty("diver_category")
+        return {
+            "uid": uid,
+            "fullname": registration.participant_fullname[:20],
+            "category": DIVER_CATEGORY_TO_ACRONYM.get(category),
+            "color": DIVER_CATEGORY_TO_COLOR.get(category, "dark"),
+        }
+
     @property
     def registrations(self):
         registrations = get_registrations(self.context, only_accepted=True)
+        uid_to_registrations = {r.UID(): r for r in registrations}
         teams = self.context.teams
-        registration_to_team = {uid: number + 1 for number, team in enumerate(teams) for uid in team}
         infos = []
-        for registration in registrations:
-            user = registration.user
-            category = user.getProperty("diver_category")
-            registration_uid = registration.UID()
-            infos.append(
-                {
-                    "uid": registration_uid,
-                    "fullname": registration.participant_fullname[:20],
-                    "category": DIVER_CATEGORY_TO_ACRONYM.get(category),
-                    "team": registration_to_team.get(registration_uid, 0),
-                    "color": DIVER_CATEGORY_TO_COLOR.get(category, "dark"),
-                }
-            )
+        for number, team in enumerate(teams):
+            team_number = number + 1
+            for uid in team:
+                if uid in uid_to_registrations:
+                    registration = uid_to_registrations.pop(uid)
+                    registration_infos = self._get_registration_infos(registration)
+                    registration_infos["team"] = team_number
+                    infos.append(registration_infos)
+        for registration in uid_to_registrations.values():
+            registration_infos = self._get_registration_infos(registration)
+            registration_infos["team"] = 0
+            infos.append(registration_infos)
         return infos
 
 

@@ -2,7 +2,10 @@
     <metal:javascriptslot fill-slot="javascript_head_slot">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.14.0/Sortable.min.js"></script>
     </metal:javascriptslot>
-    <metal:main fill-slot="content" tal:define="registrations view/registrations">
+    <metal:main fill-slot="content-description">
+        Ce formulaire permet de créer les palanquées pour la sortie. Glisser les personnes de la section inscriptions dans une section palanquée et enregistrer les modifications effectuées.
+    </metal:main>
+    <metal:main fill-slot="content-core" tal:define="registrations view/registrations">
         <style>
             #registrations {
                 display: grid;
@@ -44,7 +47,8 @@
         </div>
         <form method="post" action="${context/absolute_url}/@@store-teams" onsubmit="updateFormTeam()">
             <input id="form_teams" type="hidden" name="teams" />
-            <input type="submit" class="btn btn-primary" value="Enregistrer les palanquées" />
+            <input type="submit" class="btn btn-primary mt-3" value="Enregistrer les palanquées" />
+            <a href="${context/absolute_url}" class="btn btn-secondary mt-3">Annuler</a>
         </form>
         <script>
          new Sortable(document.getElementById("registrations"), {

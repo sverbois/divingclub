@@ -24,6 +24,18 @@ class TaskInformationView(DefaultView):
             "bar_friday": "Bar (vendredi)",
             "inflation": "Gonflage",
             "pool": "Surveillance piscine",
+            "close": "Fermeture",
+        }
+
+    @property
+    @memoize
+    def points(self):
+        return {
+            "bar_tuesday": 2,
+            "bar_friday": 3,
+            "inflation": 2,
+            "pool": 2,
+            "close": 3,
         }
 
     @property
@@ -48,7 +60,7 @@ class TaskInformationView(DefaultView):
         )
         for b in brains:
             task = b.getObject()
-            if task.manager in infos and task.category in ["bar", "inflation", "pool"]:
+            if task.manager in infos and task.category in ["bar", "inflation", "pool", "close"]:
                 if task.category == "bar":
                     if task.start.weekday() == 4:
                         infos[task.manager]["counts"]["bar_friday"] += 1
@@ -65,10 +77,10 @@ class TaskInformationView(DefaultView):
                 del infos[uid]
 
         # Compute discount
-        POINT_VALUE = 1.5
+        POINT_VALUE = 1.5  # 1.5€ per point
         for uid in infos:
             infos[uid]["discount"] = 0.0
             for category in self.categories:
-                points = 3 if category == "bar_friday" else 2
+                points = self.points.get(category, 0)
                 infos[uid]["discount"] += infos[uid]["counts"][category] * points * POINT_VALUE
         return infos.values()

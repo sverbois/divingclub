@@ -20,10 +20,10 @@ class TaskInformationView(DefaultView):
     @memoize
     def categories(self):
         return {
-            "bar_tuesday": "Bar (mardi)",
-            "bar_friday": "Bar (vendredi)",
+            "bar_tuesday": "Bar MAR",
+            "bar_friday": "Bar VEN",
             "inflation": "Gonflage",
-            "pool": "Surveillance piscine",
+            "pool": "Piscine",
             "close": "Fermeture",
         }
 
@@ -44,7 +44,7 @@ class TaskInformationView(DefaultView):
         infos = {}
         for u in users:
             user_infos = {
-                "fullname": u.getProperty("fullname"),
+                "fullname": u.getProperty("firstname") + " " + u.getProperty("lastname"),
                 "counts": dict.fromkeys(self.categories.keys(), 0),
             }
             infos[u.getId()] = user_infos
@@ -73,6 +73,7 @@ class TaskInformationView(DefaultView):
         uids = [uid for uid in infos.keys()]
         for uid in uids:
             total = sum(infos[uid]["counts"].values())
+            infos[uid]["total"] = total
             if total == 0:
                 del infos[uid]
 

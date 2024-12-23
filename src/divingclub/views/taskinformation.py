@@ -81,7 +81,8 @@ class TaskInformationView(DefaultView):
         POINT_VALUE = 1.5  # 1.5€ per point
         for uid in infos:
             infos[uid]["discount"] = 0.0
-            for category in self.categories:
-                points = self.points.get(category, 0)
-                infos[uid]["discount"] += infos[uid]["counts"][category] * points * POINT_VALUE
+            if infos[uid]["total"] >= 3:
+                for category in self.categories:
+                    points = self.points.get(category, 0)
+                    infos[uid]["discount"] += infos[uid]["counts"][category] * points * POINT_VALUE
         return infos.values()

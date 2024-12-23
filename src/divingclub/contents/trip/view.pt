@@ -13,8 +13,10 @@
                         <span tal:replace="structure view/w/spot/render" />
                     </div>
                     <div class="col">
-                        <tal:icon tal:replace="structure python:icons.tag('person')" />
+                        <a tal:omit-tag="python:not (user.has_role(['Authenticated',], context) and context.manager_email)" tal:attributes="href string:mailto:${context/manager_email}">
+                            <tal:icon tal:replace="structure python:icons.tag('person')" />
                             ${context/manager_fullname}
+                        </a>
                     </div>
                     <!-- <div class="col">
                             <tal:icon tal:replace="structure python:icons.tag('calendar-plus')" />

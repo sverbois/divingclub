@@ -91,3 +91,20 @@ body.template-summary_view #content-core img {
 body.template-event_listing #content .cal_date {
   min-width: 90px;
 }
+
+/* Personnalisation de la divingclub-task*/
+body.template-divingclub-task div#formfield-form-widgets-IEventBasic-whole_day,
+body.template-divingclub-task div#formfield-form-widgets-IEventBasic-open_end,
+body.portaltype-divingclub-task
+  div#formfield-form-widgets-IEventBasic-whole_day,
+body.portaltype-divingclub-task
+  div#formfield-form-widgets-IEventBasic-open_end {
+  display: none;
+}
+
+/* Personnalisation de la divingclub-trip*/
+body.template-divingclub-trip div#formfield-form-widgets-IEventBasic-whole_day,
+body.portaltype-divingclub-trip
+  div#formfield-form-widgets-IEventBasic-whole_day {
+  display: none;
+}

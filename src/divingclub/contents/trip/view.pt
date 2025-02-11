@@ -33,11 +33,11 @@
                 <thead>
                     <tr>
                         <th class="col-1">Situation</th>
-                        <th class="col-2">Nom</th>
+                        <th class="col-3">Nom</th>
                         <th class="col-2">Brevet</th>
-                        <th class="d-none d-md-table-cell">Desideratas</th>
+                        <th class="col-4">Desideratas</th>
                         <th class="col-1" tal:condition="python:user.has_role(['Manager','Reviewer'], context)"></th>
-                        <th class=""></th>
+                        <th class="col-1"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,8 +47,8 @@
                         </td>
                         <td>${registration/fullname}</td>
                         <td>${registration/category}</td>
-                        <td class="d-none d-md-table-cell">${registration/whish}</td>
-                        <td tal:condition="python:user.has_role(['Manager','Reviewer'], context)">
+                        <td>${registration/whish}</td>
+                        <td tal:condition="python:user.has_role(['Manager','Reviewer'], context)" class="text-center">
                             <form action="${registration/url}/@@content_status_modify" class="d-inline-block">
                                 <input type="hidden" name="workflow_action" value="make_declined" />
                                 <span tal:replace="structure context/@@authenticator/authenticator" />
@@ -72,7 +72,7 @@
                                 </button>
                             </form>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <a tal:condition="registration/editable" href="${registration/url}/@@delete_confirmation" class="d-inline-block p-2">
                                 <tal:icon tal:replace="structure python:icons.tag('trash')" />
                             </a>

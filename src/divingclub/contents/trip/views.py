@@ -99,10 +99,8 @@ class TripSheetView(BrowserView):
                 fullname = f"{lastname} {firstname[:1]}."
             else:
                 fullname = f"{lastname} {firstname}"
-            if group == "moniteur":
+            if group in ("moniteur", "trois"):
                 user_info = DIVER_CATEGORY_TO_ACRONYM.get(category)
-            elif group == "trois":
-                user_info = "4*" if category in ("diver3ppa", "diver4") else "3*"
             else:
                 user_info = ""
             if group in infos:

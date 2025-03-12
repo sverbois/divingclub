@@ -31,16 +31,20 @@ body.userrole-reviewer #plone-contentmenu-workflow {
   --fc-button-border-color: var(--bs-gray-600);
 }
 
-.task {
-}
-.task-pool {
-  background-color: #9ec5fe;
+.task-animation {
+  background-color: #fecba1;
 }
 .task-bar {
   background-color: #ffe69c;
 }
+.task-close {
+  background-color: #f1aeb5;
+}
 .task-inflation {
   background-color: #a3cfbb;
+}
+.task-pool {
+  background-color: #9ec5fe;
 }
 
 /* FullCalendar */

@@ -20,6 +20,7 @@ class TaskInformationView(DefaultView):
     @memoize
     def categories(self):
         return {
+            "animation": "Animation",
             "bar_tuesday": "Bar MAR",
             "bar_friday": "Bar VEN",
             "inflation": "Gonflage",
@@ -31,6 +32,7 @@ class TaskInformationView(DefaultView):
     @memoize
     def points(self):
         return {
+            "animation": 3,
             "bar_tuesday": 2,
             "bar_friday": 3,
             "inflation": 2,
@@ -60,7 +62,7 @@ class TaskInformationView(DefaultView):
         )
         for b in brains:
             task = b.getObject()
-            if task.manager in infos and task.category in ["bar", "inflation", "pool", "close"]:
+            if task.manager in infos and task.category in ["animation", "bar", "inflation", "pool", "close"]:
                 if task.category == "bar":
                     if task.start.weekday() == 4:
                         infos[task.manager]["counts"]["bar_friday"] += 1

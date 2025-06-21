@@ -1,23 +1,24 @@
-.PHONY: help  # List phony targets
-help:
-	@cat "Makefile" | grep '^.PHONY:' | sed -e "s/^.PHONY:/- make/"
+ifeq (, $(shell which uv ))
+  $(error "[ERROR] The 'uv' command is missing from your PATH. Install it from: https://docs.astral.sh/uv/getting-started/installation/")
+endif
 
-.PHONY: install  # Install development environment
-install: bin/buildout
-	bin/buildout -c development.cfg
+.PHONY: help
+help: ## List phony targets
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: start  # Start Zope instance
-start: bin/instance
+.PHONY: bootstrap
+bootstrap: ## Bootstrap the development environment
+	uv venv
+	uv pip install -r requirements.txt
+
+.PHONY: install
+install: ## Install Plone
+	.venv/bin/buildout -c development.cfg
+
+.PHONY: start
+start: bin/instance ## Start Zope instance
 	bin/instance fg
 
-.PHONY: clean  # Clean development environment
-clean:
-	rm -r bin develop-eggs eggs include lib parts .installed.cfg pyvenv.cfg
-
-bin/instance: bin/buildout
-
-bin/buildout: bin/pip
-	bin/pip install -r https://dist.plone.org/release/6.0.8/requirements.txt
-
-bin/pip:
-	python3.10 -m venv .
+.PHONY: clean
+clean: ## Clean development environment
+	rm -rf .venv bin develop-eggs eggs include lib node_modules parts .installed.cfg pyvenv.cfg

@@ -8,6 +8,11 @@
       <role name="Editor" />
     </permission>
 
+    <permission name="Show Toolbar" acquire="False">
+      <role name="Manager" />
+      <role name="Reviewer" />
+    </permission>
+
     <permission name="Sharing page: Delegate roles" acquire="False">
       <role name="Manager" />
     </permission>

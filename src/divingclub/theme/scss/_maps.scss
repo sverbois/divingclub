@@ -1,9 +1,8 @@
-/*** MAPS OVERRIDES ***/
-$custom-state-colors: (
+$theme-state-colors: (
   "open": $success,
   "closed": $warning,
   "accepted": $success,
   "pending": $warning,
   "declined": $danger,
 );
-$state-colors: map-merge($state-colors, $custom-state-colors);
+$state-colors: map-merge($state-colors, $theme-state-colors);

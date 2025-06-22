@@ -1,7 +1,12 @@
+// Construit à partir de @plone/plonetheme-barceloneta-base/scss/barceloneta.scss"
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "bootstrap/scss/functions";
 
+// 2. Include any default variable overrides here
 @import "variables";
 
+// 3. Include remainder of required Barceloneta and Bootstrap stylesheets
 @import "@plone/plonetheme-barceloneta-base/scss/variables.colors.plone";
 @import "@plone/plonetheme-barceloneta-base/scss/variables.colors.dark.plone";
 @import "@plone/plonetheme-barceloneta-base/scss/variables.properties";
@@ -9,16 +14,15 @@
 @import "@plone/plonetheme-barceloneta-base/scss/base";
 @import "@plone/plonetheme-barceloneta-base/scss/root_variables";
 
+// 4. Include any default map overrides here
 @import "maps";
 
+// 5. Include remainder of required parts
 @import "@plone/plonetheme-barceloneta-base/scss/mixins/mixin.portlets.plone";
 @import "@plone/plonetheme-barceloneta-base/scss/mixins/mixin.font.plone";
 
-// Plone components
 @import "@plone/plonetheme-barceloneta-base/scss/cards";
 @import "@plone/plonetheme-barceloneta-base/scss/scaffolding";
-
-// // style.scss
 @import "@plone/plonetheme-barceloneta-base/scss/icons";
 @import "@plone/plonetheme-barceloneta-base/scss/header";
 @import "@plone/plonetheme-barceloneta-base/scss/sitenav";
@@ -28,8 +32,11 @@
 @import "@plone/plonetheme-barceloneta-base/scss/portlets";
 @import "@plone/plonetheme-barceloneta-base/scss/footer";
 
-//@import "@plone/plonetheme-barceloneta-base/scss/print";
+@import "@plone/plonetheme-barceloneta-base/scss/print";
 
 @import "@plone/plonetheme-barceloneta-base/scss/roboto-webfont";
 
+@import "@plone/plonetheme-barceloneta-base/plonetheme/barceloneta/theme/tinymce/tinymce-formats";
+
+// 6. Add additional custom code here
 @import "custom";

@@ -3,6 +3,15 @@
         <script src="https://unpkg.com/htmx.org@2.0.2" integrity="sha384-Y7hw+L/jvKeWIRRkqWYfPcvVxHzVzn5REgzbawhxAuQGwX1XWe70vji+VSeHOThJ" crossorigin="anonymous"></script>
     </metal:javascriptslot>
 
+    <metal:title fill-slot="content-title">
+        <h1>
+            ${context/title}
+            <a href="${context/absolute_url}/++add++divingclub.Task" tal:condition="python:checkPermission('divingclub: Add Task', context)">
+                <tal:icon tal:replace="structure python:icons.tag('plus-circle', tag_class='text-primary')" />
+            </a>
+        </h1>
+    </metal:title>
+
     <metal:main fill-slot="content-core">
         <?python
             request_url = request.get('ACTUAL_URL')

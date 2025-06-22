@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <object name="portal_types" meta_type="Plone Types Tool">
 
+  <object meta_type="Dexterity FTI" name="divingclub.CashBoxStatus" />
   <object meta_type="Dexterity FTI" name="divingclub.Registration" />
   <object meta_type="Dexterity FTI" name="divingclub.Task" />
   <object meta_type="Dexterity FTI" name="divingclub.Trip" />

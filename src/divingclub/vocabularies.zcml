@@ -1,9 +1,11 @@
 <configure xmlns="http://namespaces.zope.org/zope">
 
   <!-- Diver certificates vocabulary -->
-  <utility
-      name="divingclub.DiverCategories"
-      component=".vocabularies.get_diver_categories_vocabulary"
-      />
+  <utility component=".vocabularies.get_diver_categories_vocabulary"
+           name="divingclub.DiverCategories"
+  ></utility>
+  <utility component=".vocabularies.get_cashboxstatus_categories_vocabulary"
+           name="divingclub.CashBoxStatusCategories"
+  ></utility>
 
 </configure>

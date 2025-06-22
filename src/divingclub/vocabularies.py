@@ -97,3 +97,12 @@ DIVER_CATEGORY_TO_COLOR = {
 @provider(IVocabularyFactory)
 def get_diver_categories_vocabulary(context):
     return vocabulary_from_items(DIVER_CATEGORIES)
+
+CASHBOXSTATUS_CATEGORIES = {
+    "opening": "Ouverture",
+    "closing": "Fermeture",
+}
+
+@provider(IVocabularyFactory)
+def get_cashboxstatus_categories_vocabulary(context):
+    return vocabulary_from_items(CASHBOXSTATUS_CATEGORIES)

@@ -12,6 +12,10 @@
       <role name="Manager" />
     </permission>
 
+    <permission name="divingclub: Add CashBoxStatus" acquire="False">
+      <role name="Manager" />
+    </permission>
+
     <permission name="divingclub: Add Task" acquire="False">
       <role name="Manager" />
       <role name="Contributor" />

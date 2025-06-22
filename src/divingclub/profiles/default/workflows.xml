@@ -21,6 +21,7 @@
     <type type_id="EasyForm">
       <bound-workflow workflow_id="content_page_workflow" />
     </type>
+    <type type_id="divingclub.Registration" />
     <type type_id="divingclub.Trip">
       <bound-workflow workflow_id="content_trip_workflow" />
     </type>

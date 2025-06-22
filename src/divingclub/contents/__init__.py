@@ -1,3 +1,5 @@
+from .cashboxstatus.content import ICashBoxStatus
+from .cashboxstatus.content import CashBoxStatus
 from .registration.content import IRegistration
 from .registration.content import Registration
 from .task.content import ITask

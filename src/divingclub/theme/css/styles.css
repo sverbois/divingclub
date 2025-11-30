@@ -1,10 +1,12 @@
 body #section-byline {
   display: none;
 }
+body #contentview-folderContents,
 body #plone-contentmenu-actions,
 body #plone-contentmenu-workflow {
   display: none;
 }
+body.userrole-manager #contentview-folderContents,
 body.userrole-manager #plone-contentmenu-actions,
 body.userrole-manager #plone-contentmenu-workflow {
   display: block;

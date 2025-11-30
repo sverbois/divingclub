@@ -11,6 +11,7 @@
     <permission name="Show Toolbar" acquire="False">
       <role name="Manager" />
       <role name="Reviewer" />
+      <role name="Editor" />
     </permission>
 
     <permission name="Sharing page: Delegate roles" acquire="False">

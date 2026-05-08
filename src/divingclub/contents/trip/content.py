@@ -1,13 +1,12 @@
 import json
 
-from collective.taxonomy.interfaces import ITaxonomy
 from plone import api
 from plone import schema
 from plone.app.z3cform.widgets.select import AjaxSelectFieldWidget
+from plone.app.z3cform.widgets.select import SelectFieldWidget
 from plone.autoform import directives
 from plone.dexterity.content import Container
 from plone.supermodel import model
-from z3c.form.browser.radio import RadioFieldWidget
 from zope.interface import implementer
 
 from divingclub.vocabularies import get_title_from_taxonomy_value
@@ -38,6 +37,7 @@ class ITrip(model.Schema):
     )
 
     # Widgets
+    directives.widget("spot", SelectFieldWidget, prompt=True, promptMessage="-- Sélectionner un lieu --")
     directives.omitted("teams")
     directives.widget("manager", AjaxSelectFieldWidget)
 
